@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles.css"; // You can style your card in a separate CSS file
+import "../styles.css";
 
 const PortfolioCard = ({ title, description, imageUrl, link }) => {
   const handleClick = () => {

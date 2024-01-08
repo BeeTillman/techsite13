@@ -18,31 +18,6 @@ body {
   cursor: none;
 }
 
-.cursor-dot,
-.cursor-dot-outline {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #FAF9F6;
-}
-
-.cursor-dot-outline {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(33, 116, 194, 0.5);
-}
-
 div#main {
   display: flex;
   flex-direction: column;
@@ -204,15 +179,11 @@ img.socialIcon {
   width: 450px;
   border-radius: 5px;
   overflow: hidden;
-  cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
-.portfolio-card:hover {
-  transform: scale(1.075);
-}
-.portfolio-card:hover ~ .cursor-dot-outline {
-  transform: scale(1.5);
+.portfolio-card:hover ~ .cursor-dot {
+  opacity: 0;
 }
 
 .card-image {
@@ -253,4 +224,29 @@ img.socialIcon {
   text-decoration-thickness: auto;
   text-align: left;
   color: #C7D1DB;
+}
+
+.cursor-dot,
+.cursor-dot-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #FAF9F6;
+}
+
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(33, 116, 194, 0.5);
 }
