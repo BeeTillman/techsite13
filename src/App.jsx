@@ -13,6 +13,7 @@ import Home from "./Components/Home";
 import Portfolio from "./Components/Portfolio";
 
 import "./styles.css";
+import Cursor from "./Components/Cursor";
 
 /**
  * This object represents your information. The project is set so that you
@@ -41,6 +42,7 @@ const secondaryColor = "#D2F1E4";
 const App = () => {
   return (
     <div id="main">
+      <Cursor />
       <Header />
       <Home name={siteProps.name} title={siteProps.title} />
       <Portfolio />
