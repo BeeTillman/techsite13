@@ -25,14 +25,14 @@ import "./styles.css";
  */
 const siteProps = {
   name: "Bee (Billups) Tillman",
-  title: "Web Designer & Content Creator",
-  email: "alex@example.com",
-  gitHub: "microsoft",
-  instagram: "microsoft",
-  linkedIn: "satyanadella",
+  title: "Software Engineer",
+  email: "bpt3creations@gmail.com",
+  gitHub: "beetillman",
+  instagram: "letschillwithbill",
+  linkedIn: "billups-tillman",
   medium: "",
-  twitter: "microsoft",
-  youTube: "Code",
+  twitter: "",
+  youTube: "FortunaInteractive",
 };
 
 const primaryColor = "#4E567E";

@@ -31,28 +31,28 @@ const imageAltText = "desktop with books and laptop";
  */
 const projectList = [
   {
-    title: "10 Things To Know About Azure Static Web Apps 🎉",
+    title: "ESP8266 Stock Ticker",
     description:
-      "Collaboration to create a beginner friendly article to help explain Azure Static Web Apps and tooling to get started.",
-    url: "https://dev.to/azure/10-things-to-know-about-azure-static-web-apps-3n4i",
+      "A stock ticker that uses an ESP8266 to connect to the internet and display stock prices on a liquid crystal display.",
+    url: "https://github.com/BeeTillman/ESP8266_StockTicker",
   },
   {
-    title: "Web Development for Beginners",
+    title: "Unreal Engine Beginners Course",
     description:
-      "Contributed sketch note imagery to accompany each lesson. These help provide visual representation of what is being taught.",
-    url: "https://github.com/microsoft/web-dev-for-beginners",
+      "A course for beginners to learn how to use Unreal Engine to create games.",
+    url: "https://www.youtube.com/@FortunaInteractive",
   },
   {
-    title: "My Resume Site",
+    title: "Football Simulator",
     description:
-      "Created from Microsoft's resume workshop and deployed to GitHub pages. Includes my experience and design abilities.",
-    url: "https://github.com/microsoft/workshop-library/tree/main/full/build-resume-website",
+      "A football simulator that uses Java to simulate a football game between two full 53-man rosters with coaches & ratings.",
+    url: "https://github.com/BeeTillman/FootballSimulator",
   },
   {
-    title: "GitHub Codespaces and github.dev",
+    title: "ReTerra - Space Colonization",
     description:
-      "Video interview to explain when to use GitHub.dev versus GitHub Codespaces, and how best to use each tool.",
-    url: "https://www.youtube.com/watch?v=c3hHhRME_XI",
+      "An open world space colonization game that uses Unreal Engine's Visual Scripting system and C++.",
+    url: "https://www.youtube.com/watch?v=UVR0OqfLbNc&list=PLcZRITBdTrbgjXZYpDHS5SFKVHNMmAhBC&pp=iAQB",
   },
 ];
 
