@@ -1,15 +1,15 @@
 /* PortfolioCard.css */
 
 .portfolio-card {
-    width: 500px;
-    border-radius: 8px;
+    width: 450px;
+    border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
   }
   
   .portfolio-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.075);
   }
   
   .card-image {
@@ -20,15 +20,35 @@
   
   .card-content {
     padding: 20px;
-    background-color: #161A1D;
+    background-color: #101214;
   }
   
   .card-content h3 {
-    margin-bottom: 8px;
-    color: white; /* Set the text color */
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: calc(17px + 5*((100vw - 576px)/1024));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    margin-block-end: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: white;
   }
   
   .card-content p {
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1.1px;
+    font-size: .98em;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    font-weight: 500;
+    line-height: .25;
+    margin-bottom: 20px;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    text-align: left;
     color: #C7D1DB;
   }
   

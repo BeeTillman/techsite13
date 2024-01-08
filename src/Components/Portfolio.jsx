@@ -33,29 +33,25 @@ import ESP8266STDemo from "../images/ESP8266STDemo.png";
 const projectList = [
   {
     title: "ESP8266 Stock Ticker",
-    description:
-      "A stock ticker that uses an ESP8266 to connect to the internet and display stock prices on a liquid crystal display.",
+    description: "Internet of Things",
     imageUrl: ESP8266STDemo,
     link: "https://github.com/BeeTillman/ESP8266_StockTicker",
   },
   {
     title: "Unreal Engine Beginners Course",
-    description:
-      "A complete course into the world of Unreal Engine, guiding new developers through how to create their first project. All for free on YouTube.",
+    description: "Game Development",
     link: "https://www.youtube.com/@FortunaInteractive",
     imageUrl: defaultImage,
   },
   {
     title: "Football Simulator",
-    description:
-      "A football simulator that uses Java to simulate a football game between two full 53-man rosters with coaches & ratings.",
+    description: "App Development",
     link: "https://github.com/BeeTillman/FootballSimulator",
     imageUrl: defaultImage,
   },
   {
     title: "ReTerra - Space Colonization",
-    description:
-      "An open world space colonization game that uses Unreal Engine's Visual Scripting system and C++. This project is currently still in development.",
+    description: "Game Development",
     link: "https://www.youtube.com/watch?v=UVR0OqfLbNc&list=PLcZRITBdTrbgjXZYpDHS5SFKVHNMmAhBC&pp=iAQB",
     imageUrl: defaultImage,
   },
