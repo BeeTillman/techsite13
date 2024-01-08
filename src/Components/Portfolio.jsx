@@ -29,7 +29,6 @@ import PortfolioCard from "./Card";
  */
 import defaultImage from "../images/motion-background.jpg";
 import ESP8266STDemo from "../images/ESP8266STDemo.png";
-import Cursor from "./Cursor";
 
 const projectList = [
   {

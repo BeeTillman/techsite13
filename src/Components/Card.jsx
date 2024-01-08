@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./PortfolioCard.css"; // You can style your card in a separate CSS file
-import Cursor from "./Cursor";
+import "../styles.css"; // You can style your card in a separate CSS file
 
-const PortfolioCard = ({ title, description, imageUrl, link, mouseOverEvent, mouseOutEvent }) => {
+const PortfolioCard = ({ title, description, imageUrl, link }) => {
   const handleClick = () => {
     window.open(link, "_blank");
   };
@@ -14,8 +13,6 @@ const PortfolioCard = ({ title, description, imageUrl, link, mouseOverEvent, mou
     }
   };
 
-  const handleMouseOverEvent = () => {
-  }
 
   return (
     <div
@@ -24,10 +21,6 @@ const PortfolioCard = ({ title, description, imageUrl, link, mouseOverEvent, mou
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      onMouseOver={handleMouseOverEvent}
-      onMouseOut={mouseOutEvent}
-      onFocus={() => void 0}
-      onBlur={() => void 0}
     >
       <img src={imageUrl} alt={title} className="card-image" />
       <div className="card-content">
