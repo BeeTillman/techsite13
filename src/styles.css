@@ -182,8 +182,8 @@ img.socialIcon {
   transition: transform 0.3s ease-in-out;
 }
 
-.portfolio-card:hover ~ .cursor-dot {
-  opacity: 0;
+.portfolio-card:hover {
+  transform: scale(1.075);
 }
 
 .card-image {
