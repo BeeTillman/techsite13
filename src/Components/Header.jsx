@@ -22,8 +22,8 @@ const Header = () => {
       }}
     >
       <a href="#home">//  home</a>
-      <a href="#about">//  expertise</a>
       <a href="#portfolio">//  experience</a>
+      <a href="#about">//  expertise</a>
       <a href="#footer">//  contact</a>
     </div>
   );

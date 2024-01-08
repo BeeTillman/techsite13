@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+import PortfolioCard from "./Card";
 
 /**
  * Desk image
@@ -26,44 +27,51 @@ import React from "react";
  * An array of objects that will be used to display for your project
  * links section. Below is a sample, update to reflect links you'd like to highlight.
  */
+import defaultImage from "../images/motion-background.jpg";
+import ESP8266STDemo from "../images/ESP8266STDemo.png";
+
 const projectList = [
   {
     title: "ESP8266 Stock Ticker",
     description:
       "A stock ticker that uses an ESP8266 to connect to the internet and display stock prices on a liquid crystal display.",
-    url: "https://github.com/BeeTillman/ESP8266_StockTicker",
+    imageUrl: ESP8266STDemo,
+    link: "https://github.com/BeeTillman/ESP8266_StockTicker",
   },
   {
     title: "Unreal Engine Beginners Course",
-    description: "A course for beginners to learn how to use Unreal Engine to create games.",
-    url: "https://www.youtube.com/@FortunaInteractive",
+    description:
+      "A complete course into the world of Unreal Engine, guiding new developers through how to create their first project. All for free on YouTube.",
+    link: "https://www.youtube.com/@FortunaInteractive",
+    imageUrl: defaultImage,
   },
   {
     title: "Football Simulator",
     description:
       "A football simulator that uses Java to simulate a football game between two full 53-man rosters with coaches & ratings.",
-    url: "https://github.com/BeeTillman/FootballSimulator",
+    link: "https://github.com/BeeTillman/FootballSimulator",
+    imageUrl: defaultImage,
   },
   {
     title: "ReTerra - Space Colonization",
     description:
-      "An open world space colonization game that uses Unreal Engine's Visual Scripting system and C++.",
-    url: "https://www.youtube.com/watch?v=UVR0OqfLbNc&list=PLcZRITBdTrbgjXZYpDHS5SFKVHNMmAhBC&pp=iAQB",
+      "An open world space colonization game that uses Unreal Engine's Visual Scripting system and C++. This project is currently still in development.",
+    link: "https://www.youtube.com/watch?v=UVR0OqfLbNc&list=PLcZRITBdTrbgjXZYpDHS5SFKVHNMmAhBC&pp=iAQB",
+    imageUrl: defaultImage,
   },
 ];
 
 const Portfolio = () => {
   return (
     <section className="padding" id="portfolio">
-      <h2 style={{ textAlign: "center" }}>Portfolio</h2>
+      <h2 style={{ textAlign: "center" }} className="large">
+        My Work
+      </h2>
       <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
         <div className="container">
           {projectList.map((project) => (
             <div className="box" key={project.title}>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                <h3 style={{ flexBasis: "40px" }}>{project.title}</h3>
-              </a>
-              <p className="small">{project.description}</p>
+              <PortfolioCard {...project} />
             </div>
           ))}
         </div>

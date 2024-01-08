@@ -34,7 +34,7 @@ section.min-height {
 
 section.padding {
   padding: 5rem 0;
-  background-color: #282828;
+  background-color: black;
 }
 
 section img.background {
@@ -77,6 +77,16 @@ h2 {
   text-shadow: #2174C2 1px 3px 11px;
   -webkit-font-smoothing: antialiased;
   color: #f9f9f9;
+}
+
+h2.large {
+  font-family: "Poppins", sans-serif;
+  font-size: 75px;
+  font-weight: 600;
+  height: 0px;
+  letter-spacing: -1.5px;
+  line-height: 32px;
+  text-shadow: rgba(33, 116, 194, 0.6) 1px 3px 11px;
 }
 
 h3 {
@@ -139,15 +149,17 @@ a:hover {
 }
 
 .container {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 330px 300px;
-  margin: 20px auto;
+  display: flex;
+  justify-content: space-around; /* Spaces items evenly along the main axis */
+  align-items: center; /* Centers items along the cross axis */
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  max-width: 1200px; /* Set a maximum width for the container if needed */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 .container .box {
   border-radius: 10px;
-  border: 1px solid #FAF9F6;
+  border: 0px solid #FAF9F6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

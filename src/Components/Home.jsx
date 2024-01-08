@@ -43,7 +43,18 @@ const Home = ({ name, title }) => {
         <h1>{name}</h1>
         <h2>SOFTWARE ENGINEER & APP DEVELOPER.</h2>
       </div>
-      <div style={{ position: "absolute", bottom: "3rem", left: "50%" }}>
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100%",
+          width: "100%",
+          top: "300px",
+        }}
+        >
         <img src={arrowSvg} style={{ height: "3rem", width: "3rem" }} alt={imageAltText} />
       </div>
     </section>
