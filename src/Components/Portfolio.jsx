@@ -38,8 +38,7 @@ const projectList = [
   },
   {
     title: "Unreal Engine Beginners Course",
-    description:
-      "A course for beginners to learn how to use Unreal Engine to create games.",
+    description: "A course for beginners to learn how to use Unreal Engine to create games.",
     url: "https://www.youtube.com/@FortunaInteractive",
   },
   {
@@ -61,13 +60,6 @@ const Portfolio = () => {
     <section className="padding" id="portfolio">
       <h2 style={{ textAlign: "center" }}>Portfolio</h2>
       <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
-        <div style={{ maxWidth: "40%", alignSelf: "center" }}>
-          <img
-            src={image}
-            style={{ height: "90%", width: "100%", objectFit: "cover" }}
-            alt={imageAltText}
-          />
-        </div>
         <div className="container">
           {projectList.map((project) => (
             <div className="box" key={project.title}>
