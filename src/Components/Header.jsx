@@ -15,13 +15,22 @@ const Header = () => {
 
       timeoutId = setTimeout(() => {
         setHeaderVisibility(true);
-      }, 2000); // Adjust the delay as needed (2 seconds in this example)
+      }, 200); // Adjust the delay as needed (200 milliseconds in this example)
+    };
+
+    const handleScrollEnd = () => {
+      clearTimeout(timeoutId);
+      setHeaderVisibility(true);
     };
 
     window.addEventListener("scroll", handleScroll);
 
+    // Use capture phase to handle the scroll end event early
+    window.addEventListener("scroll", handleScrollEnd, true);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollEnd, true);
     };
   }, []);
 
