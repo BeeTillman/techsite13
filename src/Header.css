@@ -87,17 +87,42 @@
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed; /* Change to fixed */
     top: 60px;
     right: 0;
     background: rgba(18, 18, 18, 0.9);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Make it take full width */
+    transition: transform 0.3s ease; /* Add transition property */
+    transform: translateX(100%); /* Initially hide it off-screen */
   }
 
   .nav-links.open {
-    display: flex;
+    transform: translateX(0); /* Move it back on-screen when open class is applied */
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #FAF9F6;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 23px;
+    text-size-adjust: 100%;
+    list-style-position: outside;
+    overflow-wrap: break-word;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #3498db;
   }
 }
+
