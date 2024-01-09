@@ -14,6 +14,7 @@ import Portfolio from "./Components/Portfolio";
 
 import "./styles.css";
 import Cursor from "./Components/Cursor";
+import Skills from "./Components/Skills";
 
 /**
  * This object represents your information. The project is set so that you
@@ -46,6 +47,7 @@ const App = () => {
       <Header />
       <Home name={siteProps.name} title={siteProps.title} />
       <Portfolio />
+      <Skills />
       <About />
       <Footer {...siteProps} primaryColor={primaryColor} secondaryColor={secondaryColor} />
     </div>

@@ -20,10 +20,6 @@ const PortfolioCard = ({ title, description, imageUrl, link, onMouseOver, onMous
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
-      onFocus={onMouseOver}
-      onBlur={onMouseOut}
     >
       <img src={imageUrl} alt={title} className="card-image" />
       <div className="card-content">

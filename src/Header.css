@@ -8,6 +8,14 @@
     top: 0;
     width: 100%;
     z-index: 10;
+    transition: top 0.5s ease, backdrop-filter 0.5s ease; /* Adjust the duration for a smoother transition */
+    backdrop-filter: blur(8px);
+  }
+  
+  .header.hidden {
+    top: -100%;
+    backdrop-filter: none;
+    transition: top 0.5s ease, backdrop-filter 0.5s ease; /* Adjust the duration for a smoother transition */
   }
   
   .nav-link {
@@ -29,10 +37,10 @@
   }
   
   .nav-link:hover {
-    color: #3498db; /* Change to your desired hover color */
+    color: #3498db;
   }
   
   .header:hover .nav-link:not(:hover) {
-    opacity: 0.7; /* Adjust the opacity as needed */
+    opacity: 0.7;
   }
   
