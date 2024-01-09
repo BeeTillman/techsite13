@@ -36,7 +36,7 @@ const Skills = () => {
     { label: "Unreal", iconClass: "devicon-unrealengine-original" },
     { label: "VS", iconClass: "devicon-visualstudio-plain colored" },
     { label: "IntelliJ", iconClass: "devicon-intellij-plain colored" },
-    { label: "Android", iconClass: "devicon-androidstudio-plain colored" },
+    { label: "A. Studio", iconClass: "devicon-androidstudio-plain colored" },
     // Add more entries as needed
   ];
 
