@@ -41,9 +41,16 @@ const primaryColor = "#4E567E";
 const secondaryColor = "#D2F1E4";
 
 const App = () => {
+  const isDesktop = () => {
+    return (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) &&
+      window.innerWidth > 768
+    );
+  };
+
   return (
     <div id="main">
-      <Cursor id="Cursor" />
+      {isDesktop() && <Cursor />}
       <Header />
       <Home name={siteProps.name} title={siteProps.title} />
       <Portfolio />
