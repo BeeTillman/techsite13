@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles.css";
+import "../Portfolio.css";
 
 const PortfolioCard = ({ title, description, imageUrl, link }) => {
   const handleClick = () => {
