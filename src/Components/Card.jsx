@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles.css";
 
-const PortfolioCard = ({ title, description, imageUrl, link, onMouseOver, onMouseOut }) => {
+const PortfolioCard = ({ title, description, imageUrl, link }) => {
   const handleClick = () => {
     window.open(link, "_blank");
   };

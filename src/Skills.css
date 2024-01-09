@@ -1,51 +1,67 @@
 /* Skills.css */
 .skills-section {
-  background-color: #000;
-  color: #fff;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .skills-categories {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 1200px; /* Set a maximum width for the container if needed */
-  margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px; /* Set a maximum width for the container if needed */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
 .skills-category {
-  flex: 1;
-  min-width: 250px;
-  margin: 1rem;
-  padding: 1.5rem;
-  background-color: #333;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: left;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, #101214, #1C2B41); /* Linear gradient background */
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
 .skills-category:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.skills-category h3 {
+    font-size: 1.5rem;
+    font-weight: 700; /* Increase font weight for the title */
+    margin-bottom: 0.5rem;
+    color: #3498db; /* Change color for the title */
+    border-bottom: 2px solid #3498db; /* Add a solid line underneath the title */
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.skills-category i {
+    font-size: 1.5em; /* Adjust the size of the icons */
+    margin-right: 5px; /* Add some spacing between the icon and text */
+    vertical-align: middle;
+    position: relative;
+    top: -1px; /* Adjust this value until the icon is perfectly centered */
 }
 
-li {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
+.skills-category ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+    justify-content: space-between; /* Space items evenly along the main axis */
+}
+
+.skills-category li {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    flex-basis: calc(33.33% - 10px); /* Distribute items evenly with some spacing */
 }
