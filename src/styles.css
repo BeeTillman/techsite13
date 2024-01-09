@@ -235,3 +235,10 @@ img.socialIcon {
   outline: 1.5px solid #FAF9F6;
   background-color: rgba(33, 116, 194, 0.35);
 }
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
