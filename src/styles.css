@@ -256,3 +256,33 @@ img.socialIcon {
   }
 }
 
+@media (max-width: 768px) {
+  .socialIcon {
+    height: 40px;
+    width: 40px;
+  }
+
+  #footer {
+    padding: 3rem 0; /* Adjust padding for smaller screens */
+  }
+
+  .socialIcon {
+    height: 40px;
+    width: 40px;
+  }
+
+  .small {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .socialIcon {
+    height: 30px;
+    width: 30px;
+  }
+
+  .small {
+    font-size: 12px; /* Further adjust font size for even smaller screens */
+  }
+}
