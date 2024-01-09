@@ -1,49 +1,54 @@
 #home {
     position: relative;
-  }
-  
-  .background {
+}
+
+.background {
     width: 100%;
+    max-width: 100%; /* Ensure the image doesn't overflow on smaller screens */
     height: 100vh;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-  }
-  
-  .content {
+}
+
+.content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #FAF9F6;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 8vw;
     font-weight: 600;
     letter-spacing: 2.2px;
     line-height: 105px;
     margin: 0;
     text-shadow: rgba(0, 0, 0, 1) 1px 3px 11px;
-  }
-  
-  h2 {
+}
+
+h2 {
     font-size: 22px;
     font-weight: 500;
     letter-spacing: 2.2px;
     line-height: 22px;
     text-shadow: #2174C2 1px 3px 11px;
     margin: 0;
-  }
-  
-  .arrow-container {
+}
+
+.arrow-container {
     margin-top: 30px;
-  }
-  
-  .arrow {
+}
+
+.arrow {
     height: 3rem;
     width: 3rem;
-  }
-  
+}
+
+/* Prevent horizontal overflow on mobile devices */
+html, body {
+    overflow-x: hidden;
+}
