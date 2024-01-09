@@ -1,9 +1,9 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState, useEffect } from "react";
-import "../Header.css"; // Assuming you have a CSS file for styling
+import "../Header.css";
 
 const Header = () => {
   const [isHeaderVisible, setHeaderVisibility] = useState(true);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let timeoutId;
@@ -15,42 +15,42 @@ const Header = () => {
 
       timeoutId = setTimeout(() => {
         setHeaderVisibility(true);
-      }, 200); // Adjust the delay as needed (200 milliseconds in this example)
-    };
-
-    const handleScrollEnd = () => {
-      clearTimeout(timeoutId);
-      setHeaderVisibility(true);
+      }, 2000);
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Use capture phase to handle the scroll end event early
-    window.addEventListener("scroll", handleScrollEnd, true);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleScrollEnd, true);
     };
   }, []);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
-      <a href="#home" className="nav-link">
-        // home
-      </a>
-      <a href="#portfolio" className="nav-link">
-        // experience
-      </a>
-      <a href="#skills" className="nav-link">
-        // skills
-      </a>
-      <a href="#about" className="nav-link">
-        // expertise
-      </a>
-      <a href="#footer" className="nav-link">
-        // contact
-      </a>
+      <div className="menu-toggle" onClick={toggleMobileMenu}>
+        ☰ {/* Hamburger menu icon */}
+      </div>
+      <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
+        <a href="#home" className="nav-link">
+          Home
+        </a>
+        <a href="#portfolio" className="nav-link">
+          Experience
+        </a>
+        <a href="#skills" className="nav-link">
+          Skills
+        </a>
+        <a href="#about" className="nav-link">
+          Expertise
+        </a>
+        <a href="#footer" className="nav-link">
+          Contact
+        </a>
+      </div>
     </div>
   );
 };
