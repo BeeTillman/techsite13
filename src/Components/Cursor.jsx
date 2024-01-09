@@ -1,41 +1,44 @@
-import React, { useEffect } from "react";
-import { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Cursor = () => {
   const delay = 18;
-
   const dot = useRef(null);
   const dotOutline = useRef(null);
-
   const cursorVisible = useRef(true);
   const cursorEnlarged = useRef(false);
-
   const endX = useRef(window.innerWidth / 2);
   const endY = useRef(window.innerHeight / 2);
   const _x = useRef(0);
   const _y = useRef(0);
-
   const requestRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mousedown", mouseOverEvent);
-    document.addEventListener("mouseup", mouseOutEvent);
-    document.addEventListener("mouseenter", mouseEnterEvent);
-    document.addEventListener("mouseleave", mouseLeaveEvent);
-    document.addEventListener("mousemove", mouseMoveEvent);
+    if (isDesktop()) {
+      document.addEventListener("mousedown", mouseOverEvent);
+      document.addEventListener("mouseup", mouseOutEvent);
+      document.addEventListener("mouseenter", mouseEnterEvent);
+      document.addEventListener("mouseleave", mouseLeaveEvent);
+      document.addEventListener("mousemove", mouseMoveEvent);
 
-    animateDotOutline();
+      animateDotOutline();
+    }
 
     return () => {
-      document.removeEventListener("mousedown", mouseOverEvent);
-      document.removeEventListener("mouseup", mouseOutEvent);
-      document.removeEventListener("mouseenter", mouseEnterEvent);
-      document.removeEventListener("mouseleave", mouseLeaveEvent);
-      document.removeEventListener("mousemove", mouseMoveEvent);
+      if (isDesktop()) {
+        document.removeEventListener("mousedown", mouseOverEvent);
+        document.removeEventListener("mouseup", mouseOutEvent);
+        document.removeEventListener("mouseenter", mouseEnterEvent);
+        document.removeEventListener("mouseleave", mouseLeaveEvent);
+        document.removeEventListener("mousemove", mouseMoveEvent);
 
-      cancelAnimationFrame(requestRef.current);
+        cancelAnimationFrame(requestRef.current);
+      }
     };
   }, []);
+
+  const isDesktop = () => {
+    return window.innerWidth > 768; // Adjust the threshold as needed
+  };
 
   const toggleCursorVisibility = () => {
     if (cursorVisible.current) {
