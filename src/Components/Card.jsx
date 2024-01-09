@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles.css";
 
-const PortfolioCard = ({ title, description, imageUrl, link }) => {
+const PortfolioCard = ({ title, description, imageUrl, link, onMouseOver, onMouseOut }) => {
   const handleClick = () => {
     window.open(link, "_blank");
   };
@@ -13,7 +13,6 @@ const PortfolioCard = ({ title, description, imageUrl, link }) => {
     }
   };
 
-
   return (
     <div
       className="portfolio-card"
@@ -21,6 +20,10 @@ const PortfolioCard = ({ title, description, imageUrl, link }) => {
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+      onFocus={onMouseOver}
+      onBlur={onMouseOut}
     >
       <img src={imageUrl} alt={title} className="card-image" />
       <div className="card-content">

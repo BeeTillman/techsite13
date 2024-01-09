@@ -49,8 +49,8 @@ const Cursor = () => {
 
   const toggleCursorSize = () => {
     if (cursorEnlarged.current) {
-      dot.current.style.transform = "translate(-50%, -50%) scale(0.75)";
-      dotOutline.current.style.transform = "translate(-50%, -50%) scale(1.5)";
+      dot.current.style.transform = "translate(-50%, -50%) scale(0.50)";
+      dotOutline.current.style.transform = "translate(-50%, -50%) scale(2)";
     } else {
       dot.current.style.transform = "translate(-50%, -50%) scale(1)";
       dotOutline.current.style.transform = "translate(-50%, -50%) scale(1)";

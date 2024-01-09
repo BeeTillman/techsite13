@@ -1,0 +1,38 @@
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background: rgba(18, 18, 18, 0.25);
+    padding: 1rem;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .nav-link {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 23px;
+    text-size-adjust: 100%;
+    list-style-position: outside;
+    overflow-wrap: break-word;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: #FAF9F6;
+    text-decoration: none;
+    cursor: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #3498db; /* Change to your desired hover color */
+  }
+  
+  .header:hover .nav-link:not(:hover) {
+    opacity: 0.7; /* Adjust the opacity as needed */
+  }
+  

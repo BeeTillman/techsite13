@@ -30,6 +30,16 @@ import PortfolioCard from "./Card";
 import defaultImage from "../images/motion-background.jpg";
 import ESP8266STDemo from "../images/ESP8266STDemo.png";
 
+const handleMouseOver = () => {
+  // Trigger mouseOverEvent in Cursor component
+  document.dispatchEvent(new Event("mousedown"));
+};
+
+const handleMouseOut = () => {
+  // Trigger mouseOutEvent in Cursor component
+  document.dispatchEvent(new Event("mouseup"));
+};
+
 const projectList = [
   {
     title: "ESP8266 Stock Ticker",
@@ -66,7 +76,14 @@ const Portfolio = () => {
       <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
         <div className="container">
           {projectList.map((project) => (
-            <div className="box" key={project.title}>
+            <div
+              className="box"
+              key={project.title}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              onFocus={handleMouseOver}
+              onBlur={handleMouseOut}
+            >
               <PortfolioCard {...project} />
             </div>
           ))}
