@@ -10,20 +10,41 @@ const Header = () => {
     let scrollFinishedTimeoutId;
 
     const handleScroll = () => {
-      setHeaderVisibility(false);
-
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
+      // Check if the user is on a computer
+      const isOnComputer = window.innerWidth > 768; // Adjust the threshold as needed
+    
+      if (isOnComputer) {
+        const homeSection = document.getElementById("home");
+    
+        if (homeSection) {
+          const homeSectionHeight = homeSection.offsetHeight;
+          const scrollPosition = window.scrollY;
+    
+          // Check if the scroll position is within the home section
+          if (scrollPosition <= homeSectionHeight) {
+            setHeaderVisibility(true);
+            return; // Exit early if in the home section
+          }
+        }
+    
+        setHeaderVisibility(false);
+    
+        clearTimeout(timeoutId);
+    
+        timeoutId = setTimeout(() => {
+          setHeaderVisibility(true);
+        }, 2000);
+    
+        // After scrolling finishes, set the header to visible immediately
+        clearTimeout(scrollFinishedTimeoutId);
+    
+        scrollFinishedTimeoutId = setTimeout(() => {
+          setHeaderVisibility(true);
+        }, 300);
+      } else {
+        // On mobile, set the header to always be visible without fading
         setHeaderVisibility(true);
-      }, 2000);
-
-      // After scrolling finishes, set the header to visible immediately
-      clearTimeout(scrollFinishedTimeoutId);
-
-      scrollFinishedTimeoutId = setTimeout(() => {
-        setHeaderVisibility(true);
-      }, 300);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
