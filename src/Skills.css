@@ -65,3 +65,24 @@
     margin-bottom: 0.25rem;
     flex-basis: calc(33.33% - 10px); /* Distribute items evenly with some spacing */
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .skills-categories {
+      flex-direction: column; /* Stack categories vertically on smaller screens */
+      align-items: center; /* Center categories on smaller screens */
+    }
+  
+    .skills-category {
+      width: 80%; /* Adjust width for better responsiveness on smaller screens */
+      margin: 1rem auto; /* Center categories horizontally on smaller screens */
+    }
+  
+    .skills-category ul {
+      justify-content: center; /* Center items within each category on smaller screens */
+    }
+  
+    .skills-category li {
+      flex-basis: calc(50% - 10px); /* Distribute items evenly with some spacing on smaller screens */
+    }
+  }
