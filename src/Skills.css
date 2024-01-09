@@ -1,21 +1,32 @@
 /* Skills.css */
 .skills-section {
-    background-color: #000;
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+h2.large {
+  font-family: "Poppins", sans-serif;
+  font-size: 75px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  line-height: 32px;
+  text-shadow: rgba(33, 116, 194, 0.6) 1px 3px 11px;
+  margin: 20px 0 0; /* Adjust top margin for space between title and categories */
 }
 
 .skills-categories {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 1200px; /* Set a maximum width for the container if needed */
-    margin: 0 auto; /* Center the container horizontally */
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px; /* Adjust the top margin for space between title and categories */
 }
 
 .skills-category {

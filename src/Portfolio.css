@@ -51,6 +51,15 @@
     color: #C7D1DB;
 }
 
+#portfolio h2.large {
+    margin-top: 0;
+  }
+  
+  #portfolio .container {
+    margin-top: 60px; /* Adjust the margin-top as needed */
+  }
+  
+
 @media (max-width: 768px) {
     .portfolio-card {
         width: 100%; /* Make the cards take up the full width */
