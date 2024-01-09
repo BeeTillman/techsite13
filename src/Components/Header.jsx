@@ -11,16 +11,16 @@ const Header = () => {
 
     const handleScroll = () => {
       setHeaderVisibility(false);
-    
+
       clearTimeout(timeoutId);
-    
+
       timeoutId = setTimeout(() => {
         setHeaderVisibility(true);
       }, 2000);
-    
+
       // After scrolling finishes, set the header to visible immediately
       clearTimeout(scrollFinishedTimeoutId);
-    
+
       scrollFinishedTimeoutId = setTimeout(() => {
         setHeaderVisibility(true);
       }, 300);
