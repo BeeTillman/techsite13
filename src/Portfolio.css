@@ -5,6 +5,8 @@
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
+    opacity: 0; /* Set initial opacity to 0 */
+    animation: fade-in 0.5s ease-in-out forwards; /* Apply fade-in animation */
 }
   
 .portfolio-card:hover {
@@ -53,12 +55,11 @@
 
 #portfolio h2.large {
     margin-top: 0;
-  }
+}
   
-  #portfolio .container {
+#portfolio .container {
     margin-top: 60px; /* Adjust the margin-top as needed */
-  }
-  
+}
 
 @media (max-width: 768px) {
     .portfolio-card {
@@ -69,5 +70,14 @@
     .card-image {
         height: 150px;
         width: 100%; /* Further adjust the height of the card image for smaller screens */
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
