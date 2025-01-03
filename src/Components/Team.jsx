@@ -64,7 +64,12 @@ const Team = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Add visible class to section for fade-in
           entry.target.classList.add('visible');
+          // Add visible class to team members for individual animations
+          entry.target.querySelectorAll('.team-member').forEach(member => {
+            member.classList.add('visible');
+          });
         }
       },
       { threshold: 0.1 }
