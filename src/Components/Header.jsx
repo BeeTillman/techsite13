@@ -62,17 +62,20 @@ const Header = () => {
         ☰
       </button>
       <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-        <a href="#home" className="nav-link">
+        <a href="#hero" className="nav-link">
           Home
         </a>
-        <a href="#services" className="nav-link">
-          Services
-        </a>
         <a href="#about" className="nav-link">
-          About Us
+          About
+        </a>
+        <a href="#team" className="nav-link">
+          Our Team
         </a>
         <a href="#contact" className="nav-link">
           Contact
+        </a>
+        <a href="#apply" className="nav-link">
+          Apply
         </a>
       </div>
     </div>
