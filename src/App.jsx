@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Hero from "./Components/Hero";
 import About from "./Components/About";
 import Team from "./Components/Team";
+import Contact from "./Components/Contact";
 
 import "./styles/main.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -14,6 +15,7 @@ const App = () => {
       <Hero />
       <About />
       <Team />
+      <Contact />
     </div>
   );
 };

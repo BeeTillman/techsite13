@@ -1,10 +1,10 @@
 .team-section {
-    position: relative !important;
-    padding: 4rem 15% !important;
-    background-color: #101214 !important;
-    overflow: hidden !important;
-    opacity: 1 !important;
-  }
+  position: relative !important;
+  padding: 4rem 15% 8rem 15% !important;
+  background-color: #101214 !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
   
   .team-section::before {
     content: '' !important;
@@ -37,11 +37,12 @@
   
   .team-grid {
     display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important; /* 5 columns */
+    grid-template-columns: repeat(5, 1fr) !important;
     gap: 3rem !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-    justify-items: center !important; /* Center items in grid */
+    margin-bottom: 4rem !important; /* Add margin to bottom of grid */
+    justify-items: center !important;
   }
   
   .team-member {

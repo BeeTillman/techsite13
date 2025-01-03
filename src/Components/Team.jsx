@@ -117,6 +117,7 @@ const Team = () => {
   return (
     <section ref={sectionRef} id="team" className="team-section section-transition">
       <div className="section-overlay overlay-top"></div>
+      <div className="section-overlay overlay-bottom"></div>
       <div className="team-content">
         <h2>Meet Our Team</h2>
         <p className="subtitle">We pride ourselves on our people</p>
