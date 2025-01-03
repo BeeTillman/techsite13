@@ -1,21 +1,27 @@
 .header {
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 2rem;
-  background: rgba(18, 18, 18, 0.25);
-  padding: 1rem;
+  background: transparent;
+  padding: 2rem 5rem; /* Increased padding - top/bottom: 2rem, left/right: 5rem */
   top: 0;
   width: 100%;
   z-index: 10;
-  transition: top 0.5s ease, backdrop-filter 0.5s ease;
-  backdrop-filter: blur(8px);
+  box-sizing: border-box;
 }
 
 .header.hidden {
   top: -100%;
   backdrop-filter: none;
   transition: top 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-right: 3rem; /* Added margin to move links away from right edge */
 }
 
 .nav-link {

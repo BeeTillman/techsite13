@@ -1,52 +1,48 @@
-import React from "react";
-import image from "../images/motion-background.jpg";
-
-const imageAltText = "purple and blue abstract background";
-
-const description =
-  "Techport 13 is a leading IT consulting firm dedicated to providing innovative solutions to help businesses thrive in the digital age.";
-
-const skillsList = [
-  "IT Consulting",
-  "Cloud Services",
-  "Cybersecurity",
-  "Software Development",
-];
-
-const detailOrQuote =
-  "Our team of experts is committed to delivering top-notch services and support to ensure your business success.";
+import React, { useEffect, useRef } from "react";
 
 const About = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when 20% visible
+        rootMargin: '-50px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="padding" id="about">
-      <img className="background" src={image} alt={imageAltText} />
-      <div
-        style={{
-          backgroundColor: "rgb(18, 18, 18)",
-          width: "50%",
-          padding: "4rem",
-          margin: "3rem auto",
-          textAlign: "center",
-        }}
-      >
+    <section ref={sectionRef} id="about" className="about-section">
+      <div className="about-content">
         <h2>About Us</h2>
-        <p className="large">{description}</p>
-        <hr />
-        <ul
-          style={{
-            textAlign: "left",
-            columns: 2,
-            fontSize: "1.25rem",
-            margin: "2rem 3rem",
-            gap: "3rem",
-          }}
-        >
-          {skillsList.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
-        <hr />
-        <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
+        <p>
+          Techport Thirteen was founded in 1996. We have the experience, 
+          knowledge, and expertise to provide a wide range of services 
+          your company needs to get the most out of the ServiceNow platform.
+        </p>
+        <p>
+          From implementation services to as-needed project assistance to 
+          long-term support, Techport Thirteen has years of experience 
+          providing ServiceNow support for companies in virtually every industry.
+        </p>
       </div>
     </section>
   );

@@ -7,9 +7,9 @@ import image2 from "../images/tpsiteOfficeStock1.jpg";
 import image3 from "../images/tpsiteOfficeStock1.jpg";
 
 const quotes = [
-  "Empowering your business with innovative IT solutions.",
-  "Transforming technology into business value.",
-  "Your trusted partner in IT consulting."
+  "Dedicated exclusively to the ServiceNow Platform.",
+  "Recognized as a Premier Partner with ServiceNow.",
+  "Experienced, Knowledgable, Professional",
 ];
 
 const Hero = () => {
