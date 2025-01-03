@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import image1 from "../images/motion-background.jpg";
 import tpsitePfpBTillman from "../images/tpsitePfpBTillman.png";
 import tpsitePfpADino from "../images/tpsitePfpADino.png";
@@ -26,149 +26,104 @@ import tpsitePfpZWatkins from "../images/tpsitePfpZWatkins.png";
 import tpsitePfpBVargas from "../images/tpsitePfpBVargas.png";
 
 const teamMembers = [
-  {
-    name: "Alec Dino",
-    image: tpsitePfpADino,
-  },
-  {
-    name: "Amy Robben",
-    image: tpsitePfpARobben,
-  },
-  {
-    name: "Ben Vargas",
-    image: tpsitePfpBVargas,
-  },
-  {
-    name: "Billups Tillman",
-    image: tpsitePfpBTillman,
-  },
-  {
-    name: "Dustin Green",
-    image: tpsitePfpDGreen,
-  },
-  {
-    name: "Dylan Diener",
-    image: tpsitePfpDDiener,
-  },
-  {
-    name: "Hunter Bailey",
-    image: tpsitePfpHBailey,
-  },
-  {
-    name: "Jerrod Davenport",
-    image: tpsitePfpJDavenport,
-  },
-  {
-    name: "Jordan Johnson",
-    image: tpsitePfpJJJohnson,
-  },
-  {
-    name: "Jordan Eason",
-    image: tpsitePfpJEason,
-  },
-  {
-    name: "Josh Clements",
-    image: tpsitePfpJClements,
-  },
-  {
-    name: "Josh Montag",
-    image: tpsitePfpJMontag,
-  },
-  {
-    name: "John Little",
-    image: tpsitePfpJLittle,
-  },
-  {
-    name: "Kevin Lindsay",
-    image: tpsitePfpKLindsay,
-  },
-  {
-    name: "Kyle Harrison",
-    image: tpsitePfpKHarrison,
-  },
-  {
-    name: "Lexi Fouts",
-    image: tpsitePfpLFouts,
-  },
-  {
-    name: "Manish Patel",
-    image: tpsitePfpMPatel,
-  },
-  {
-    name: "Michael Debs",
-    image: tpsitePfpMDebs,
-  },
-  {
-    name: "Michael Thrasher",
-    image: tpsitePfpMThrasher,
-  },
-  {
-    name: "Patrick Hutson",
-    image: tpsitePfpPHutson,
-  },
-  {
-    name: "Sebastian Steen",
-    image: tpsitePfpSSteen,
-  },
-  {
-    name: "Stephen D’Angelo",
-    image: tpsitePfpSDAngelo,
-  },
-  {
-    name: "Steven Chaney",
-    image: tpsitePfpSChaney,
-  },
-  {
-    name: "Zach Watkins",
-    image: tpsitePfpZWatkins,
-  },
+  { name: "Alec Dino", image: tpsitePfpADino },
+  { name: "Amy Robben", image: tpsitePfpARobben },
+  { name: "Ben Vargas", image: tpsitePfpBVargas },
+  { name: "Billups Tillman", image: tpsitePfpBTillman },
+  { name: "Dustin Green", image: tpsitePfpDGreen },
+  { name: "Dylan Diener", image: tpsitePfpDDiener },
+  { name: "Hunter Bailey", image: tpsitePfpHBailey },
+  { name: "Jerrod Davenport", image: tpsitePfpJDavenport },
+  { name: "Jordan Johnson", image: tpsitePfpJJJohnson },
+  { name: "Josh Eason", image: tpsitePfpJEason },
+  { name: "Josh Clements", image: tpsitePfpJClements },
+  { name: "Joshua Montag", image: tpsitePfpJMontag },
+  { name: "Justin Little", image: tpsitePfpJLittle },
+  { name: "Kevin Lindsay", image: tpsitePfpKLindsay },
+  { name: "Kyle Harrison", image: tpsitePfpKHarrison },
+  { name: "Lexi Fouts", image: tpsitePfpLFouts },
+  { name: "Manish Patel", image: tpsitePfpMPatel },
+  { name: "Michael Debs", image: tpsitePfpMDebs },
+  { name: "Michael Thrasher", image: tpsitePfpMThrasher },
+  { name: "Patrick Hutson", image: tpsitePfpPHutson },
+  { name: "Sebastian Steen", image: tpsitePfpSSteen },
+  { name: "Stephen D'Angelo", image: tpsitePfpSDAngelo },
+  { name: "Steven Chaney", image: tpsitePfpSChaney },
+  { name: "Zach Watkins", image: tpsitePfpZWatkins },
 ];
 
-
 const Team = () => {
-  const memberRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const [visibleMembers, setVisibleMembers] = useState([]);
+  const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const MEMBERS_TO_SHOW = 10;
+  const CYCLE_INTERVAL = 12500;
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible'); // Remove visible class when scrolling away
-          }
-        });
-      },
-      { 
-        threshold: 0.2, // Trigger when 20% of element is visible
-        rootMargin: '0px' 
+    const getNextGroup = (index) => {
+      const totalGroups = Math.ceil(teamMembers.length / MEMBERS_TO_SHOW);
+      const normalizedIndex = index % totalGroups;
+      const start = normalizedIndex * MEMBERS_TO_SHOW;
+      const end = Math.min(start + MEMBERS_TO_SHOW, teamMembers.length);
+
+      if (end - start < MEMBERS_TO_SHOW) {
+        return [
+          ...teamMembers.slice(start),
+          ...teamMembers.slice(0, MEMBERS_TO_SHOW - (end - start)),
+        ];
       }
-    );
 
-    // Observe each team member
-    memberRefs.current.forEach((member) => {
-      if (member) observer.observe(member);
-    });
-
-    return () => {
-      memberRefs.current.forEach((member) => {
-        if (member) observer.unobserve(member);
-      });
+      return teamMembers.slice(start, end);
     };
+
+    // Set initial members
+    setVisibleMembers(getNextGroup(0));
+
+    // Set up interval for cycling members
+    const interval = setInterval(() => {
+      // Start transition
+      setIsTransitioning(true);
+
+      // After fade out, update members
+      setTimeout(() => {
+        setCurrentGroupIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          setVisibleMembers(getNextGroup(nextIndex));
+          return nextIndex;
+        });
+
+        // After new members are set, remove transition state
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 50); // Short delay to ensure DOM update
+      }, 600); // Match the CSS transition duration
+    }, CYCLE_INTERVAL);
+
+    return () => clearInterval(interval);
   }, []);
 
+  // Add a useEffect to handle visibility when members change
+  useEffect(() => {
+    if (!isTransitioning) {
+      const members = document.querySelectorAll(".team-member");
+      members.forEach((member) => {
+        member.classList.add("visible");
+      });
+    }
+  }, [visibleMembers, isTransitioning]);
+
   return (
-    <section id="team" className="team-section section-transition">
+    <section ref={sectionRef} id="team" className="team-section section-transition">
       <div className="section-overlay overlay-top"></div>
       <div className="team-content">
         <h2>Meet Our Team</h2>
         <p className="subtitle">We pride ourselves on our people</p>
         <div className="team-grid">
-          {teamMembers.map((member, index) => (
-            <div 
-              key={index} 
-              className="team-member"
-              ref={el => memberRefs.current[index] = el}
+          {visibleMembers.map((member) => (
+            <div
+              key={`${member.name}-${currentGroupIndex}`}
+              className={`team-member ${isTransitioning ? "transitioning" : ""}`}
             >
               <div className="member-image-container">
                 <img src={member.image} alt={member.name} className="member-image" />
