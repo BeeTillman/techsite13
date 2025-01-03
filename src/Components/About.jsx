@@ -1,50 +1,20 @@
-/**
- * About component
- *
- * Space for you to describe more about yourself.
- */
-
 import React from "react";
-
-/**
- * About background image
- *
- * Below is a sample image. Upload the image of your choice into the "images"
- * directory and import here for use. Then, set imageAltText to string that 
- * represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a image you
- * freely use on your site.
- */
 import image from "../images/motion-background.jpg";
 
 const imageAltText = "purple and blue abstract background";
 
-/**
- * Sort description that expands on your title on the Home component.
- */
 const description =
-  "I am a software engineering student at Kennesaw State University's College of Computing and Software Engineering. I am passionate about solving problems in new creative ways to drive innovation. By leveraging my problem solving experience I continually look for new and better ways to make tech accessible by all.";
+  "Techport 13 is a leading IT consulting firm dedicated to providing innovative solutions to help businesses thrive in the digital age.";
 
-/**
- * List of some of skills or technologies you work on, are learning,
- * passionate about, or enjoy,
- */
-// eslint-disable-next-line prettier/prettier
 const skillsList = [
-  "Web Development",
-  "User Experience",
-  "Game Development",
-  "Project Management",
+  "IT Consulting",
+  "Cloud Services",
+  "Cybersecurity",
+  "Software Development",
 ];
 
-/**
- * Use this to give more information about what you are passionate about,
- * how you best work, or even a quote. This will help someone learn more
- * about you on a professional level.
- */
 const detailOrQuote =
-  "";
+  "Our team of experts is committed to delivering top-notch services and support to ensure your business success.";
 
 const About = () => {
   return (
@@ -59,7 +29,7 @@ const About = () => {
           textAlign: "center",
         }}
       >
-        <h2>About Myself</h2>
+        <h2>About Us</h2>
         <p className="large">{description}</p>
         <hr />
         <ul

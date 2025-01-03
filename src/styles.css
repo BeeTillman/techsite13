@@ -1,13 +1,3 @@
-/**
-* CSS file to hold styles that apply across the application
-*/
-
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: "Roboto mono", sans-serif;
   height: 100%;
@@ -15,68 +5,28 @@ body {
   overflow-x: hidden;
   padding: 0;
   width: 100%;
-  cursor: none;
-}
-
-div#main {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-}
-
-section {
-  position: relative;
-  width: 100vw;
-}
-
-section.min-height {
-  min-height: 100vh;
-}
-
-section.padding {
-  padding: 5rem 0;
-  background-color: black;
-}
-
-section img.background {
-  height: 100%;
-  left: 50%;
-  object-fit: cover;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, 0);
-  width: 100vmax;
-  z-index: -1;
 }
 
 h1 {
   font-family: "Poppins", sans-serif;
   font-size: 8vw;
   font-weight: 600;
-  hyphens: manual;
   letter-spacing: 2.2px;
   line-height: 105px;
-  margin-block-end: 0px;
-  margin-block-start: 0px;
+  margin: 0;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 1) 1px 3px 11px;
   text-transform: uppercase;
-  margin: 0;
   color: #FAF9F6;
 }
 
 h2 {
-  clear: both;
-  box-sizing: border-box;
-  display: block;
   font-family: "Roboto mono", sans-serif;
   font-size: 22px;
   font-weight: 500;
   letter-spacing: 2.2px;
   line-height: 22px;
   text-shadow: #2174C2 1px 3px 11px;
-  -webkit-font-smoothing: antialiased;
   color: #f9f9f9;
 }
 
@@ -84,7 +34,6 @@ h2.large {
   font-family: "Poppins", sans-serif;
   font-size: 75px;
   font-weight: 600;
-  height: 0px;
   letter-spacing: -1.5px;
   line-height: 32px;
   text-shadow: rgba(33, 116, 194, 0.6) 1px 3px 11px;
@@ -94,10 +43,7 @@ h3 {
   font-weight: 400;
   font-size: 1.25rem;
   margin: 0;
-  color:#FAF9F6;
-}
-h3:hover {
-  color: #2174C2;
+  color: #FAF9F6;
 }
 
 p {
@@ -117,29 +63,19 @@ p.small {
 }
 
 hr {
-  margin: 2.5rem;
-}
-
-li {
-  line-height: 1.7;
-  color: #FAF9F6;
-}
-
-li::marker {
-  color: #4e567e;
-}
-
-a:hover {
-  color: #2174C2;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
 .container {
   display: flex;
-  justify-content: space-around; /* Spaces items evenly along the main axis */
-  align-items: center; /* Centers items along the cross axis */
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  max-width: 1200px; /* Set a maximum width for the container if needed */
-  margin: 0 auto; /* Center the container horizontally */
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .container .box {
@@ -150,35 +86,113 @@ a:hover {
   justify-content: flex-start;
   padding: 24px 16px;
   text-align: center;
+  background-color: #101214;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-img.socialIcon {
-  height: 30px;
-  width: 30px;
+.container .box:hover {
+  transform: scale(1.05);
 }
 
-.cursor-dot,
-.cursor-dot-outline {
+.padding {
+  padding: 4rem 0;
+}
+
+.background {
+  width: 100%;
+  height: auto;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  pointer-events: none;
-  z-index: 9999;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
 }
 
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #FAF9F6;
+.hero-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 80vh !important;
+  overflow: hidden !important;
 }
 
-.cursor-dot-outline {
-  width: 40px;
-  height: 40px;
-  outline: 1.5px solid #FAF9F6;
-  background-color: rgba(33, 116, 194, 0.35);
+.hero-section .carousel .slide {
+  height: 80vh !important;
+  position: relative !important;
+}
+
+.hero-section .carousel .slide::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.65) !important; /* Adjust opacity here - 0.5 = 50% dark */
+  z-index: 1 !important;
+}
+
+.hero-section .carousel .slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Arrow Controls */
+.hero-section .carousel .control-arrow {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: auto !important;
+  padding: 20px !important;
+  opacity: 0.8 !important;
+}
+
+/* Dots Navigation */
+.hero-section .carousel .control-dots {
+  bottom: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+}
+
+.hero-section .carousel .dot {
+  width: 12px !important;
+  height: 12px !important;
+  margin: 0 8px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: none !important;
+}
+
+.hero-section .carousel .dot.selected {
+  background: #ffffff !important;
+}
+
+.hero-section .carousel .legend {
+  z-index: 2 !important;
+  background: rgba(211, 211, 211, 0.025) !important;
+  padding: 30px !important;
+  font-size: 3rem !important;
+  font-weight: 500 !important;
+  color: #FAF9F6 !important;
+  position: absolute !important;
+  bottom: 40px !important;
+  right: 40px !important;
+  left: auto !important;
+  margin: 0 !important;
+  width: 40% !important;
+  max-width: 800px !important;
+  text-align: right !important;
+  border-radius: 15px !important;
+  box-sizing: border-box !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .hero-section .carousel .legend {
+    width: 80% !important;
+    font-size: 2rem !important;
+    padding: 20px !important;
+    right: 20px !important;
+  }
 }

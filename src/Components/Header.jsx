@@ -10,39 +10,35 @@ const Header = () => {
     let scrollFinishedTimeoutId;
 
     const handleScroll = () => {
-      // Check if the user is on a computer
-      const isOnComputer = window.innerWidth > 768; // Adjust the threshold as needed
-    
+      const isOnComputer = window.innerWidth > 768;
+
       if (isOnComputer) {
         const homeSection = document.getElementById("home");
-    
+
         if (homeSection) {
           const homeSectionHeight = homeSection.offsetHeight;
           const scrollPosition = window.scrollY;
-    
-          // Check if the scroll position is within the home section
+
           if (scrollPosition <= homeSectionHeight) {
             setHeaderVisibility(true);
-            return; // Exit early if in the home section
+            return;
           }
         }
-    
+
         setHeaderVisibility(false);
-    
+
         clearTimeout(timeoutId);
-    
+
         timeoutId = setTimeout(() => {
           setHeaderVisibility(true);
         }, 2000);
-    
-        // After scrolling finishes, set the header to visible immediately
+
         clearTimeout(scrollFinishedTimeoutId);
-    
+
         scrollFinishedTimeoutId = setTimeout(() => {
           setHeaderVisibility(true);
         }, 300);
       } else {
-        // On mobile, set the header to always be visible without fading
         setHeaderVisibility(true);
       }
     };
@@ -60,23 +56,20 @@ const Header = () => {
 
   return (
     <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
-      <div className="menu-toggle" onClick={toggleMobileMenu}>
-        ☰ {/* Hamburger menu icon */}
-      </div>
+      <button className="menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+        ☰
+      </button>
       <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
         <a href="#home" className="nav-link">
           Home
         </a>
-        <a href="#portfolio" className="nav-link">
-          Experience
-        </a>
-        <a href="#skills" className="nav-link">
-          Skills
+        <a href="#services" className="nav-link">
+          Services
         </a>
         <a href="#about" className="nav-link">
-          Expertise
+          About Us
         </a>
-        <a href="#footer" className="nav-link">
+        <a href="#contact" className="nav-link">
           Contact
         </a>
       </div>
