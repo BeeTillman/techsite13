@@ -3,7 +3,7 @@
     padding: 4rem 15% !important;
     background-color: #101214 !important;
     min-height: 100vh !important;
-    opacity: 0 !important;
+    opacity: 1 !important;
     transform: translateY(20px) !important;
     transition: all 0.8s ease-out !important;
   }
@@ -11,6 +11,17 @@
   .apply-section.visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
+  }
+  
+  .apply-content {
+    position: relative !important;
+    z-index: 2 !important;
+    text-align: center !important;
+  }
+  
+  .apply-content h2 {
+    margin-bottom: 3rem !important;
+    color: #FAF9F6 !important;
   }
   
   .benefits-grid {
@@ -46,4 +57,72 @@
     color: #a0a0a0 !important;
     font-size: 1rem !important;
     line-height: 1.5 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  .interview-section {
+    margin-top: 6rem !important;
+    text-align: center !important;
+  }
+  
+  .interview-section .subtitle {
+    color: #a0a0a0 !important;
+    margin-bottom: 3rem !important;
+  }
+  
+  .process-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 2rem !important;
+    margin-top: 3rem !important;
+  }
+  
+  .process-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 2rem !important;
+    border-radius: 10px !important;
+    transition: transform 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .process-card:hover {
+    transform: translateY(-5px) !important;
+  }
+  
+  .step-number {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #3498db !important;
+    margin-bottom: 1rem !important;
+    background: rgba(52, 152, 219, 0.1) !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .process-card h3 {
+    color: #FAF9F6 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .process-card p {
+    color: #a0a0a0 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .process-grid {
+      grid-template-columns: 1fr !important;
+    }
   }
