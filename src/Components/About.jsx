@@ -2,29 +2,34 @@ import React, { useEffect, useRef } from "react";
 
 const About = () => {
   const sectionRef = useRef(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    const handleScroll = () => {
+      if (contentRef.current && sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollPosition = window.scrollY;
+        const sectionTop = rect.top + scrollPosition;
+        
+        if (scrollPosition > sectionTop - window.innerHeight && 
+            scrollPosition < sectionTop + rect.height) {
+          const relativeScroll = scrollPosition - sectionTop;
+          // Inverted the effect by adding minus sign and reduced rate for smoothness
+          const parallaxRate = -(relativeScroll * 0.15); 
+          contentRef.current.style.transform = `translateY(${parallaxRate}px)`;
         }
-      },
-      { threshold: 0.1 }
-    );
+      }
+    };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="about-section section-transition">
+    <section ref={sectionRef} id="about" className="about-section">
       <div className="section-overlay overlay-top"></div>
       <div className="section-overlay overlay-bottom"></div>
-      <div className="about-content">
+      <div ref={contentRef} className="about-content">
         <h2>About Us</h2>
         <p>
           Techport Thirteen was founded in 1996. We have the experience, 

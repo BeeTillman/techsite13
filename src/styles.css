@@ -136,21 +136,20 @@ p {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: url('./images/tpsiteSkylineStock1.jpg') no-repeat center center fixed !important;
+  background: url('./images/tpsiteSkylineStock3.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
-  opacity: 0 !important;
+  opacity: 1 !important; /* Changed from 0 to 1 */
   visibility: visible !important;
   transition: opacity 0.5s ease-in-out !important;
-  background-color: black !important;
 }
 
 .about-section:not(.visible) {
-  opacity: 0.85 !important;
+  opacity: 1 !important;
   background-color: black !important;
 }
 
 .about-section.visible {
-  opacity: 0.95 !important;
+  opacity: 1 !important;
   background-color: transparent !important;
 }
 
@@ -161,13 +160,23 @@ p {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  ) !important;
   z-index: 1 !important;
-  transition: background-color 0.5s ease-in-out !important;
+  transition: all 0.5s ease-in-out !important;
 }
 
 .about-section.visible::after {
-  background-color: rgba(0, 0, 0, 0.4) !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  ) !important;
 }
 
 .about-content {
@@ -176,6 +185,7 @@ p {
   max-width: 800px !important;
   text-align: center !important;
   padding: 2rem !important;
+  will-change: transform !important;
 }
 
 /* Team Section */
@@ -351,6 +361,8 @@ p {
 .team-member:nth-child(n+9):nth-child(-n+12) { transition-delay: 0.25s !important; }
 /* Fourth row */
 .team-member:nth-child(n+13):nth-child(-n+16) { transition-delay: 0.35s !important; }
+/* Fifth row */
+.team-member:nth-child(n+13):nth-child(-n+16) { transition-delay: 0.45s !important; }
 
 /* Make fade out visible */
 .team-member:not(.visible) {
