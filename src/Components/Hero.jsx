@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "../styles.css";
 
@@ -13,9 +13,29 @@ const quotes = [
 ];
 
 const Hero = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="hero" className="hero-section">
-<Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+    <section ref={sectionRef} id="hero" className="hero-section section-transition">
+      <div className="section-overlay overlay-bottom"></div>
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
         <div>
           <img src={image1} alt="Empowering your business" />
           <p className="legend">{quotes[0]}</p>

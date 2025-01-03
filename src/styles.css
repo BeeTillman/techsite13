@@ -1,5 +1,11 @@
 /* Global Styles */
 body {
+  background-color: #101214 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
   font-family: "Roboto mono", sans-serif;
   height: 100%;
   margin: 0;
@@ -251,4 +257,51 @@ p {
     width: 150px !important;
     height: 150px !important;
   }
+}
+
+/* Section Transitions */
+.section-transition {
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fade in animation for sections */
+.hero-section, .about-section, .team-section {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  transition: all 0.8s ease-out !important;
+}
+
+.hero-section.visible, 
+.about-section.visible, 
+.team-section.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Gradient overlays for section blending */
+.section-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 150px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+.overlay-top {
+  top: 0 !important;
+  background: linear-gradient(to bottom, #101214 0%, rgba(16, 18, 20, 0) 100%) !important;
+}
+
+.overlay-bottom {
+  bottom: 0 !important;
+  background: linear-gradient(to top, #101214 0%, rgba(16, 18, 20, 0) 100%) !important;
+}
+
+/* Hero section specific - remove top overlay */
+.hero-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }

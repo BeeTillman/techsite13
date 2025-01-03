@@ -8,29 +8,22 @@ const About = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
         }
       },
-      {
-        threshold: 0.2, // Trigger when 20% visible
-        rootMargin: '-50px'
-      }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="about-section">
+    <section ref={sectionRef} id="about" className="about-section section-transition">
+      <div className="section-overlay overlay-top"></div>
+      <div className="section-overlay overlay-bottom"></div>
       <div className="about-content">
         <h2>About Us</h2>
         <p>

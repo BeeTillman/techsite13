@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import image1 from "../images/motion-background.jpg";
 import image2 from "../images/tpsitePfpBTillman.png";
 
@@ -35,11 +35,51 @@ const teamMembers = [
     name: "Jane Smith",
     image: image2,
   },
+  {
+    name: "Jane Smith",
+    image: image2,
+  },
+  {
+    name: "Jane Smith",
+    image: image2,
+  },
+  {
+    name: "Jane Smith",
+    image: image2,
+  },
+  {
+    name: "Jane Smith",
+    image: image2,
+  },
+  {
+    name: "Jane Smith",
+    image: image2,
+  },
 ];
 
 const Team = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="team" className="team-section">
+    <section ref={sectionRef} id="team" className="team-section section-transition">
+      <div className="section-overlay overlay-top"></div>
       <div className="team-content">
         <h2>Meet Our Team</h2>
         <p className="subtitle">We pride ourselves on our people</p>
