@@ -237,12 +237,16 @@ p {
   position: relative !important;
   z-index: 2 !important;
   text-align: center !important;
-  opacity: 1 !important; /* Ensure content is visible */
+  opacity: 1 !important;
 }
 
 .team-content .subtitle {
+  font-weight: 400;
+  color: lightgray;
+  opacity: 0.55;
   font-size: 1.5rem !important;
   margin-bottom: 3rem !important;
+  margin-top: -2.5rem !important; 
 }
 
 .team-grid {
