@@ -57,40 +57,52 @@ const teamMembers = [
   },
 ];
 
+
 const Team = () => {
-  const sectionRef = useRef(null);
+  const memberRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Add visible class to section for fade-in
-          entry.target.classList.add('visible');
-          // Add visible class to team members for individual animations
-          entry.target.querySelectorAll('.team-member').forEach(member => {
-            member.classList.add('visible');
-          });
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible'); // Remove visible class when scrolling away
+          }
+        });
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.2, // Trigger when 20% of element is visible
+        rootMargin: '0px' 
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    // Observe each team member
+    memberRefs.current.forEach((member) => {
+      if (member) observer.observe(member);
+    });
 
-    return () => observer.disconnect();
+    return () => {
+      memberRefs.current.forEach((member) => {
+        if (member) observer.unobserve(member);
+      });
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} id="team" className="team-section section-transition">
+    <section id="team" className="team-section section-transition">
       <div className="section-overlay overlay-top"></div>
       <div className="team-content">
         <h2>Meet Our Team</h2>
         <p className="subtitle">We pride ourselves on our people</p>
         <div className="team-grid">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-member">
+            <div 
+              key={index} 
+              className="team-member"
+              ref={el => memberRefs.current[index] = el}
+            >
               <div className="member-image-container">
                 <img src={member.image} alt={member.name} className="member-image" />
               </div>
