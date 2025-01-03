@@ -1,59 +1,126 @@
 import React, { useEffect, useRef } from "react";
 import image1 from "../images/motion-background.jpg";
-import image2 from "../images/tpsitePfpBTillman.png";
+import tpsitePfpBTillman from "../images/tpsitePfpBTillman.png";
+import tpsitePfpADino from "../images/tpsitePfpADino.png";
+import tpsitePfpARobben from "../images/tpsitePfpARobben.png";
+import tpsitePfpDGreen from "../images/tpsitePfpDGreen.png";
+import tpsitePfpDDiener from "../images/tpsitePfpDDiener.png";
+import tpsitePfpHBailey from "../images/tpsitePfpHBailey.png";
+import tpsitePfpJDavenport from "../images/tpsitePfpJDavenport.png";
+import tpsitePfpJJJohnson from "../images/tpsitePfpJJohnson.png";
+import tpsitePfpJEason from "../images/tpsitePfpJEason.png";
+import tpsitePfpJClements from "../images/tpsitePfpJClements.png";
+import tpsitePfpJMontag from "../images/tpsitePfpJMontag.png";
+import tpsitePfpJLittle from "../images/tpsitePfpJLittle.png";
+import tpsitePfpKLindsay from "../images/tpsitePfpKLindsay.png";
+import tpsitePfpKHarrison from "../images/tpsitePfpKHarrison.png";
+import tpsitePfpLFouts from "../images/tpsitePfpLFouts.png";
+import tpsitePfpMPatel from "../images/tpsitePfpMPatel.png";
+import tpsitePfpMDebs from "../images/tpsitePfpMDebs.png";
+import tpsitePfpMThrasher from "../images/tpsitePfpMThrasher.png";
+import tpsitePfpPHutson from "../images/tpsitePfpPhutson.png";
+import tpsitePfpSSteen from "../images/tpsitePfpSSteen.png";
+import tpsitePfpSDAngelo from "../images/tpsitePfpSDAngelo.png";
+import tpsitePfpSChaney from "../images/tpsitePfpSChaney.png";
+import tpsitePfpZWatkins from "../images/tpsitePfpZWatkins.png";
+import tpsitePfpBVargas from "../images/tpsitePfpBVargas.png";
 
 const teamMembers = [
   {
-    name: "John Doe",
-    image: image1,
+    name: "Alec Dino",
+    image: tpsitePfpADino,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Amy Robben",
+    image: tpsitePfpARobben,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Ben Vargas",
+    image: tpsitePfpBVargas,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Billups Tillman",
+    image: tpsitePfpBTillman,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Dustin Green",
+    image: tpsitePfpDGreen,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Dylan Diener",
+    image: tpsitePfpDDiener,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Hunter Bailey",
+    image: tpsitePfpHBailey,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Jerrod Davenport",
+    image: tpsitePfpJDavenport,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Jordan Johnson",
+    image: tpsitePfpJJJohnson,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Jordan Eason",
+    image: tpsitePfpJEason,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Josh Clements",
+    image: tpsitePfpJClements,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "Josh Montag",
+    image: tpsitePfpJMontag,
   },
   {
-    name: "Jane Smith",
-    image: image2,
+    name: "John Little",
+    image: tpsitePfpJLittle,
+  },
+  {
+    name: "Kevin Lindsay",
+    image: tpsitePfpKLindsay,
+  },
+  {
+    name: "Kyle Harrison",
+    image: tpsitePfpKHarrison,
+  },
+  {
+    name: "Lexi Fouts",
+    image: tpsitePfpLFouts,
+  },
+  {
+    name: "Manish Patel",
+    image: tpsitePfpMPatel,
+  },
+  {
+    name: "Michael Debs",
+    image: tpsitePfpMDebs,
+  },
+  {
+    name: "Michael Thrasher",
+    image: tpsitePfpMThrasher,
+  },
+  {
+    name: "Patrick Hutson",
+    image: tpsitePfpPHutson,
+  },
+  {
+    name: "Sebastian Steen",
+    image: tpsitePfpSSteen,
+  },
+  {
+    name: "Stephen D’Angelo",
+    image: tpsitePfpSDAngelo,
+  },
+  {
+    name: "Steven Chaney",
+    image: tpsitePfpSChaney,
+  },
+  {
+    name: "Zach Watkins",
+    image: tpsitePfpZWatkins,
   },
 ];
 
