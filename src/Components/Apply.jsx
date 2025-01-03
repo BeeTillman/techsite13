@@ -101,7 +101,7 @@ const Apply = ({ isVisible }) => {
             <h3>Phone Interview</h3>
             <p>
               During a phone interview, we will access your skills and qualifications and see if
-              it's a fit for the roles we're looking for.
+              it&apos;s a fit for the roles we&apos;re looking for.
             </p>
           </div>
 
@@ -123,6 +123,51 @@ const Apply = ({ isVisible }) => {
               employment.
             </p>
           </div>
+        </div>
+        <div className="application-section">
+          <h2>Submit Your Application</h2>
+          <p className="subtitle">Take the first step towards joining our team</p>
+
+          <form className="application-form">
+            <div className="form-group">
+              <input type="text" name="name" placeholder="Name" required />
+            </div>
+
+            <div className="form-group">
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+
+            <div className="form-group">
+              <select name="source" required defaultValue="">
+                <option value="" disabled>
+                  How did you hear about us?
+                </option>
+                <option value="career_fair">Career Fair</option>
+                <option value="web">Web</option>
+                <option value="word_of_mouth">Word of Mouth</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <input type="text" name="subject" placeholder="Subject" required />
+            </div>
+
+            <div className="form-group">
+              <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+
+            <div className="form-group">
+              <label className="file-upload">
+                <input type="file" name="resume" accept=".pdf,.doc,.docx" required />
+                <span>Upload Resume</span>
+              </label>
+            </div>
+
+            <button type="submit" className="submit-btn">
+              Submit Application
+            </button>
+          </form>
         </div>
       </div>
     </section>
