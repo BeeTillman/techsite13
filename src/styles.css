@@ -139,7 +139,7 @@ p {
 }
 
 .about-section:not(.visible) {
-  opacity: 0.65 !important;
+  opacity: 0.85 !important;
   background-color: black !important;
 }
 

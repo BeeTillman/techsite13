@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Header.css";
+import logo from "../images/tpsiteTpLogo.png";
 
 const Header = () => {
   const [isHeaderVisible, setHeaderVisibility] = useState(true);
@@ -56,6 +57,7 @@ const Header = () => {
 
   return (
     <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
+      <img src={logo} alt="Techport 13 Logo" className="header-logo" />
       <button className="menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
         ☰
       </button>
