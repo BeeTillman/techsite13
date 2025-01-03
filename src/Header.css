@@ -15,8 +15,8 @@
 }
 
 .header-logo {
-  height: 40px !important; /* Adjust size as needed */
-  margin-left: 5rem !important; /* Match the right nav padding */
+  height: 40px !important;
+  margin-left: 5rem !important;
 }
 
 .header.hidden {
@@ -29,13 +29,13 @@
   display: flex;
   gap: 2rem;
   align-items: center;
-  margin-right: 3rem; /* Added margin to move links away from right edge */
+  margin-right: 3rem;
 }
 
 .nav-link {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "proxima-nova", sans-serif !important;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -1px;
   line-height: 23px;
   color: #FAF9F6;
