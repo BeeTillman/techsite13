@@ -1,114 +1,48 @@
+/* Global Styles */
 body {
   font-family: "Roboto mono", sans-serif;
   height: 100%;
   margin: 0;
-  overflow-x: hidden;
   padding: 0;
   width: 100%;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, p {
+  color: #FAF9F6 !important;
+  margin: 0;
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
-  font-size: 8vw;
-  font-weight: 600;
-  letter-spacing: 2.2px;
-  line-height: 105px;
-  margin: 0;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 1) 1px 3px 11px;
-  text-transform: uppercase;
-  color: #FAF9F6;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 8vw !important;
+  font-weight: 600 !important;
+  letter-spacing: 2.2px !important;
+  line-height: 105px !important;
+  text-align: center !important;
+  text-shadow: rgba(0, 0, 0, 1) 1px 3px 11px !important;
 }
 
 h2 {
-  font-family: "Roboto mono", sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 2.2px;
-  line-height: 22px;
-  text-shadow: #2174C2 1px 3px 11px;
-  color: #f9f9f9;
-}
-
-h2.large {
-  font-family: "Poppins", sans-serif;
-  font-size: 75px;
-  font-weight: 600;
-  letter-spacing: -1.5px;
-  line-height: 32px;
-  text-shadow: rgba(33, 116, 194, 0.6) 1px 3px 11px;
+  font-family: "Roboto mono", sans-serif !important;
+  font-size: 3rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 2rem !important;
 }
 
 h3 {
-  font-weight: 400;
-  font-size: 1.25rem;
-  margin: 0;
-  color: #FAF9F6;
+  font-weight: 400 !important;
+  font-size: 1.25rem !important;
 }
 
 p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 0;
-  font-weight: 300;
-  color: #FAF9F6;
+  font-size: 1.2rem !important;
+  line-height: 1.8 !important;
+  font-weight: 300 !important;
 }
 
-p.large {
-  font-size: 24px;
-}
-
-p.small {
-  font-size: 15px;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #333;
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
-
-.container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.container .box {
-  border-radius: 10px;
-  border: 0px solid #FAF9F6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 24px 16px;
-  text-align: center;
-  background-color: #101214;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.container .box:hover {
-  transform: scale(1.05);
-}
-
-.padding {
-  padding: 4rem 0;
-}
-
-.background {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: 0.5;
-}
-
+/* Hero Section */
 .hero-section {
   position: relative !important;
   width: 100% !important;
@@ -138,7 +72,7 @@ hr {
   object-fit: cover !important;
 }
 
-/* Arrow Controls */
+/* Carousel Controls */
 .hero-section .carousel .control-arrow {
   top: 50% !important;
   transform: translateY(-50%) !important;
@@ -147,7 +81,6 @@ hr {
   opacity: 0.8 !important;
 }
 
-/* Dots Navigation */
 .hero-section .carousel .control-dots {
   bottom: 20px !important;
   margin: 0 !important;
@@ -167,6 +100,7 @@ hr {
   background: #ffffff !important;
 }
 
+/* Carousel Legend (Text) */
 .hero-section .carousel .legend {
   background: rgba(211, 211, 211, 0.0) !important;
   padding: 30px !important;
@@ -188,15 +122,7 @@ hr {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
-@media (max-width: 768px) {
-  .hero-section .carousel .legend {
-    width: 80% !important;
-    font-size: 2rem !important;
-    padding: 20px !important;
-    right: 20px !important;
-  }
-}
-
+/* About Section */
 .about-section {
   position: relative !important;
   width: 100% !important;
@@ -209,15 +135,17 @@ hr {
   opacity: 0 !important;
   visibility: visible !important;
   transition: opacity 0.5s ease-in-out !important;
-  background-color: black !important; /* Added black background */
+  background-color: black !important;
 }
+
 .about-section:not(.visible) {
   opacity: 0.65 !important;
-  background-color: black !important; /* Added black background for initial state */
+  background-color: black !important;
 }
+
 .about-section.visible {
   opacity: 0.95 !important;
-  background-color: transparent !important; /* Fade to transparent to show image */
+  background-color: transparent !important;
 }
 
 .about-section::after {
@@ -231,31 +159,20 @@ hr {
   z-index: 1 !important;
   transition: background-color 0.5s ease-in-out !important;
 }
+
 .about-section.visible::after {
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
+
 .about-content {
   position: relative !important;
   z-index: 2 !important;
   max-width: 800px !important;
   text-align: center !important;
   padding: 2rem !important;
-  color: #FAF9F6 !important;
 }
 
-.about-content h2 {
-  font-size: 3rem !important;
-  margin-bottom: 2rem !important;
-  color: #FAF9F6 !important;
-}
-
-.about-content p {
-  font-size: 1.2rem !important;
-  line-height: 1.8 !important;
-  margin-bottom: 1.5rem !important;
-  text-align: right !important;
-}
-
+/* Team Section */
 .team-section {
   position: relative !important;
   padding: 4rem 15% !important;
@@ -285,7 +202,6 @@ hr {
 .team-content .subtitle {
   font-size: 1.5rem !important;
   margin-bottom: 3rem !important;
-  color: #FAF9F6 !important;
 }
 
 .team-grid {
@@ -317,12 +233,15 @@ hr {
   object-fit: cover !important;
 }
 
-.team-member h3 {
-  margin: 1rem 0 0.5rem 0 !important;
-  color: #FAF9F6 !important;
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
+  .hero-section .carousel .legend {
+    width: 80% !important;
+    font-size: 2rem !important;
+    padding: 20px !important;
+    right: 20px !important;
+  }
+
   .team-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
     gap: 2rem !important;
