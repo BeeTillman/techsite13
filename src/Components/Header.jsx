@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
 import logo from "../images/tpsiteTpLogo.png";
 
-const Header = () => {
+const Header = ({ onApplyClick }) => {
   const [isHeaderVisible, setHeaderVisibility] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -74,7 +74,7 @@ const Header = () => {
         <a href="#contact" className="nav-link">
           Contact
         </a>
-        <a href="#apply" className="nav-link">
+        <a href="#apply" className="nav-link" onClick={onApplyClick}>
           Apply
         </a>
       </div>

@@ -44,7 +44,21 @@ const Contact = () => {
       <div className="section-overlay overlay-top"></div>
       <div className="contact-content">
         <h2>Contact Us</h2>
-        <p className="subtitle">Get in touch with our team</p>
+
+        <div className="contact-info">
+          <div className="info-item">
+            <i className="fas fa-map-marker-alt"></i>
+            <span>4505 Peachtree Lakes Dr, Berkeley Lake, GA 30096</span>
+          </div>
+          <div className="info-item">
+            <i className="fas fa-envelope"></i>
+            <span>info@techport13.com</span>
+          </div>
+          <div className="info-item">
+            <i className="fas fa-phone"></i>
+            <span>+1 (404) 919-2660</span>
+          </div>
+        </div>
 
         <form ref={form} onSubmit={sendEmail} className="contact-form">
           <div className="form-group">
