@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
-import "../styles.css";
+import "../styles/Hero.css";
 
 import image1 from "../images/tpsiteOfficeStock1.jpg";
 import image2 from "../images/tpsiteSkylineStock6.jpg";
