@@ -83,7 +83,31 @@ p {
   transform: translateY(-50%) !important;
   height: auto !important;
   padding: 20px !important;
+  opacity: 0 !important; /* Start with arrows hidden */
+  transition: opacity 0.3s ease !important;
+  background: none !important; /* Remove black background */
+}
+.hero-section .carousel .control-arrow:hover {
+  background: none !important;
+}
+
+.hero-section .carousel .control-arrow:before {
+  border-color: #fff !important;
+  border-width: 3px !important;
+}
+
+.hero-section .carousel:hover .control-arrow {
   opacity: 0.8 !important;
+}
+
+.hero-section .carousel .control-prev.control-arrow:before {
+  border-right: 3px solid #fff !important;
+  border-bottom: 3px solid #fff !important;
+}
+
+.hero-section .carousel .control-next.control-arrow:before {
+  border-left: 3px solid #fff !important;
+  border-bottom: 3px solid #fff !important;
 }
 
 .hero-section .carousel .control-dots {
