@@ -9,7 +9,7 @@ import image3 from "../images/tpsiteSkylineStock8.jpg";
 const quotes = [
   "Dedicated exclusively to the ServiceNow Platform.",
   "Recognized as a Premier Partner with ServiceNow.",
-  "Experienced, Knowledgable, Professional",
+  "",
 ];
 
 const Hero = () => {

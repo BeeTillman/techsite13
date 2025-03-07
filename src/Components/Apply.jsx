@@ -36,9 +36,7 @@ const Apply = ({ isVisible }) => {
             <FontAwesomeIcon icon={faUmbrella} className="benefit-icon" />
             <h3>Generous Paid Time Off</h3>
             <p>
-              We believe our employees work better when they have autonomy over their own schedule.
-              Unlimited PTO allows each member of the Techport13 family to visit loved ones, take a
-              vacation, or simply a day to decompress.
+              You work better when you live better.
             </p>
           </div>
           <div className="benefit-card">
@@ -69,61 +67,6 @@ const Apply = ({ isVisible }) => {
         </div>
       </div>
       <div className="interview-section">
-        <h2>Our Interview Process</h2>
-        <p className="subtitle">
-          At Techport13 our hiring process takes a laid-back approach, resembling more of a casual
-          chat at your favorite coffee spot than a formal interrogation. We believe in making every
-          step comfortable and stress-free, ensuring that candidates can showcase their true selves
-          in a relaxed setting.
-        </p>
-
-        <div className="process-grid">
-          <div className="process-card">
-            <div className="step-number">1</div>
-            <h3>First Contact</h3>
-            <p>
-              No matter where we meet we will be keen to discuss potential collaboration and explore
-              how your skills align with our opportunities
-            </p>
-          </div>
-
-          <div className="process-card">
-            <div className="step-number">2</div>
-            <h3>Phone Call</h3>
-            <p>
-              If theres more to discuss after our introduction, you can expect us to reach out for a
-              conversation about the next steps in the hiring process.
-            </p>
-          </div>
-
-          <div className="process-card">
-            <div className="step-number">3</div>
-            <h3>Phone Interview</h3>
-            <p>
-              During a phone interview, we will access your skills and qualifications and see if
-              it&apos;s a fit for the roles we&apos;re looking for.
-            </p>
-          </div>
-
-          <div className="process-card">
-            <div className="step-number">4</div>
-            <h3>Face-to-Face</h3>
-            <p>
-              At this phase, you will be invited for a face-to-face interview, where you'll have the
-              opportunity to meet with the hiring team in person and delve deeper into your skills
-              and work experiences, and ask us questions about Techport13.
-            </p>
-          </div>
-
-          <div className="process-card">
-            <div className="step-number">5</div>
-            <h3>Making an Offer</h3>
-            <p>
-              At this time a formal offer is extended, outlining the terms and conditions of
-              employment.
-            </p>
-          </div>
-        </div>
         <div className="application-section">
           <h2>Submit Your Application</h2>
           <p className="subtitle">Take the first step towards joining our team</p>
