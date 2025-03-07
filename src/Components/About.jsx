@@ -17,7 +17,6 @@ const About = () => {
           scrollPosition < sectionTop + rect.height
         ) {
           const relativeScroll = scrollPosition - sectionTop;
-          // Inverted the effect by adding minus sign and reduced rate for smoothness
           const parallaxRate = -(relativeScroll * 0.15);
           contentRef.current.style.transform = `translateY(${parallaxRate}px)`;
         }

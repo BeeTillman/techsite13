@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Team.css";
-import image1 from "../images/motion-background.jpg";
 import tpsitePfpBTillman from "../images/tpsitePfpBTillman.png";
 import tpsitePfpADino from "../images/tpsitePfpADino.png";
 import tpsitePfpARobben from "../images/tpsitePfpARobben.png";

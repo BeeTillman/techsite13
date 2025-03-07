@@ -37,12 +37,11 @@ const Cursor = () => {
   }, []);
 
   const isDesktop = () => {
-    // Check if the user is on a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
 
-    return !isMobile && window.innerWidth > 768; // Adjust the threshold as needed
+    return !isMobile && window.innerWidth > 768;
   };
 
   const toggleCursorVisibility = () => {
