@@ -5,13 +5,13 @@
   "source": "src/index.html",
   "homepage": "https://BeeTillman.github.io/techsite13",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html",
-    "build-gh": "parcel build src/index.html --public-url '/techsite13/'",
+    "start":     "parcel src/index.html",
+    "build":     "parcel build src/index.html",
+    "build-gh":  "parcel build src/index.html --public-url '/techsite13/'",
     "predeploy": "npm run build-gh",
-    "deploy": "gh-pages -d build",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\""
+    "deploy":    "gh-pages -d dist",
+    "lint":      "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
+    "format":    "prettier --write \"src/**/*.{js,jsx,css,html}\""
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
