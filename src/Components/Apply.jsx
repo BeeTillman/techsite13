@@ -17,16 +17,13 @@ import "../styles/Apply.css";
 const Apply = ({ isVisible }) => {
   const sectionRef = useRef(null);
   const formRef = useRef(null);
-  const [status, setStatus] = useState("idle"); // idle, sending, success, error
+  const [status, setStatus] = useState("idle");
+  const [resumeName, setResumeName] = useState("");
 
-  // Intersection Observer to fade in perks
+  // Fade-in perks section
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      },
+      ([entry]) => entry.isIntersecting && entry.target.classList.add("visible"),
       { threshold: 0.1 }
     );
     if (sectionRef.current) obs.observe(sectionRef.current);
@@ -35,42 +32,45 @@ const Apply = ({ isVisible }) => {
 
   if (!isVisible) return null;
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setResumeName(file ? file.name : "");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
 
-    // Grab the file input
+    // Upload resume to Firebase
     const fileInput = formRef.current.querySelector('input[name="resume"]');
     const file = fileInput.files[0];
     if (!file) {
       alert("Please upload a resume before submitting.");
-      return setStatus("idle");
+      setStatus("idle");
+      return;
     }
 
     try {
-      // Upload to Firebase Storage under "resumes/"
-      const fileRef = storageRef(storage, `resumes/${Date.now()}_${file.name}`);
-      await uploadBytes(fileRef, file);
+      const fbRef = storageRef(storage, `resumes/${Date.now()}_${file.name}`);
+      await uploadBytes(fbRef, file);
+      const downloadURL = await getDownloadURL(fbRef);
 
-      // Get a publicly accessible URL
-      const downloadURL = await getDownloadURL(fileRef);
-
-      // Inject resume_url into a hidden input so EmailJS sees it
-      let urlInput = formRef.current.querySelector('input[name="resume_url"]');
-      if (!urlInput) {
-        urlInput = document.createElement("input");
-        urlInput.type = "hidden";
-        urlInput.name = "resume_url";
-        formRef.current.appendChild(urlInput);
+      // Insert download URL into hidden field
+      let urlField = formRef.current.querySelector('input[name="resume_url"]');
+      if (!urlField) {
+        urlField = document.createElement("input");
+        urlField.type = "hidden";
+        urlField.name = "resume_url";
+        formRef.current.appendChild(urlField);
       }
-      urlInput.value = downloadURL;
+      urlField.value = downloadURL;
 
-      // Send all form data (including resume_url) via EmailJS
+      // Send email via EmailJS
       await emailjs.sendForm(
-        "service_19px7xt",
-        "template_lyrqimq",
+        "service_19px7xt", // service ID
+        "template_lyrqimq", // template ID
         formRef.current,
-        "AD9kASCtB252sXVHL"
+        "AD9kASCtB252sXVHL" // public key
       );
 
       setStatus("success");
@@ -86,10 +86,12 @@ const Apply = ({ isVisible }) => {
       id="apply"
       className="apply-section section-transition"
     >
+      {/* Top fade-over */}
       <div className="section-overlay overlay-top" />
 
+      {/* Perks & Benefits */}
       <div className="apply-content">
-        <h2>Perks & Benefits</h2>
+        <h2>Perks &amp; Benefits</h2>
         <div className="benefits-grid">
           <div className="benefit-card">
             <FontAwesomeIcon icon={faUmbrella} className="benefit-icon" />
@@ -99,29 +101,25 @@ const Apply = ({ isVisible }) => {
           <div className="benefit-card">
             <FontAwesomeIcon icon={faPiggyBank} className="benefit-icon" />
             <h3>Generous 401k Matching</h3>
-            <p>
-              We match 50% of all pre-tax 401(k) contributions you make, up to the government maximum per year.
-            </p>
+            <p>We match 50% of all pre-tax 401(k) contributions you make.</p>
           </div>
           <div className="benefit-card">
             <FontAwesomeIcon icon={faHeartbeat} className="benefit-icon" />
             <h3>Health Insurance</h3>
-            <p>
-              We provide top-notch medical, dental, and vision coverage for you and your family, including a zero-cost option.
-            </p>
+            <p>Top-notch medical, dental, and vision coverage at zero cost.</p>
           </div>
           <div className="benefit-card">
             <FontAwesomeIcon icon={faUsers} className="benefit-icon" />
             <h3>Team Bonding</h3>
-            <p>
-              Team building and bonding foster trust, collaboration, and unity, improving communication, productivity, and satisfaction.
-            </p>
+            <p>Collaborate, innovate, and grow in our team-driven culture.</p>
           </div>
         </div>
       </div>
 
+      {/* Bottom fade-over */}
       <div className="section-overlay overlay-bottom" />
 
+      {/* Application Form */}
       <div className="interview-section">
         <div className="application-section">
           <h2>Submit Your Application</h2>
@@ -133,26 +131,14 @@ const Apply = ({ isVisible }) => {
             onSubmit={handleSubmit}
           >
             <div className="form-group">
-              <input
-                type="text"
-                name="applicant_name"
-                placeholder="Name"
-                required
-              />
+              <input type="text" name="applicant_name" placeholder="Name" required />
             </div>
             <div className="form-group">
-              <input
-                type="email"
-                name="applicant_email"
-                placeholder="Email"
-                required
-              />
+              <input type="email" name="applicant_email" placeholder="Email" required />
             </div>
             <div className="form-group">
               <select name="source" required defaultValue="">
-                <option value="" disabled>
-                  How did you hear about us?
-                </option>
+                <option value="" disabled>How did you hear about us?</option>
                 <option value="career_fair">Career Fair</option>
                 <option value="web">Web</option>
                 <option value="word_of_mouth">Word of Mouth</option>
@@ -160,39 +146,24 @@ const Apply = ({ isVisible }) => {
               </select>
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                required
-              />
+              <input type="text" name="subject" placeholder="Subject" required />
             </div>
             <div className="form-group">
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                required
-              />
+              <textarea name="message" placeholder="Your Message" required />
             </div>
             <div className="form-group">
-              <label className="file-upload">
+              <label className={`file-upload ${resumeName ? "selected" : ""}`}>
                 <input
                   type="file"
-                  name="resume"
                   accept=".pdf,.doc,.docx"
                   required
+                  onChange={handleFileChange}
                 />
-                <span>Upload Resume</span>
+                <span>{resumeName || "Upload Resume"}</span>
               </label>
             </div>
             <button type="submit" className="submit-btn">
-              {status === "sending"
-                ? "Sending…"
-                : status === "success"
-                ? "Sent!"
-                : status === "error"
-                ? "Try Again"
-                : "Submit Application"}
+              {status === "sending" ? "Sending…" : status === "success" ? "Sent!" : status === "error" ? "Try Again" : "Submit Application"}
             </button>
           </form>
         </div>

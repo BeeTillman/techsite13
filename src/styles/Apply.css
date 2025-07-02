@@ -1,3 +1,4 @@
+/* Apply Section */
 .apply-section {
   position: relative;
   padding-top: 8rem;
@@ -17,6 +18,7 @@
   z-index: 1;
 }
 
+/* Top and bottom fades */
 .section-overlay {
   position: absolute;
   left: 0;
@@ -33,7 +35,7 @@
   background: linear-gradient(to top, #101214, transparent);
 }
 
-/* perks content */
+/* Perks Content */
 .apply-content {
   position: relative;
   z-index: 3;
@@ -86,14 +88,13 @@
   text-align: center;
 }
 
+/* Application Form Section */
 .interview-section {
   position: relative;
   z-index: 3;
   padding: 4rem 2rem 6rem;
   text-align: center;
 }
-
-/* form styling */
 .application-section h2 {
   color: #faf9f6;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -117,7 +118,7 @@
   padding: 1rem;
   border: none;
   border-radius: 6px;
-  background: #1a1a1a !important;
+  background: #1a1a1a;
   color: #faf9f6;
   font-size: 1rem;
   font-family: inherit;
@@ -130,18 +131,18 @@
   background: rgba(255, 255, 255, 0.1);
   outline: none;
 }
+
+/* File Upload Button */
 .file-upload {
   position: relative;
   display: inline-block;
-  background: #1a1a1a !important;
-  color: white;
   padding: 1rem;
+  background: #1a1a1a;
+  color: #faf9f6;
+  border: 1px solid transparent;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-.file-upload:hover {
-  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 .file-upload input[type="file"] {
   position: absolute;
@@ -152,23 +153,44 @@
   opacity: 0;
   cursor: pointer;
 }
+.file-upload span {
+  pointer-events: none;
+}
+.file-upload:hover {
+  background: rgba(52, 152, 219, 0.15) !important;
+  border-color: #3498db !important;
+}
+.file-upload:hover span {
+  color: #3498db !important;
+}
+.file-upload.selected {
+  background: rgba(52, 152, 219, 0.1) !important;
+  border-color: #3498db !important;
+}
+.file-upload.selected span {
+  color: #3498db !important;
+}
+
+/* Submit Button (styled like file-upload) */
 .submit-btn {
   margin-top: 1.5rem;
-  padding: 0.75rem 2rem;
-  background: #3498db;
-  color: #faf9f6;
-  border: none;
+  padding: 1rem;
+  background: #1a1a1a !important;
+  color: #faf9f6 !important;
+  border: 1px solid transparent !important;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 .submit-btn:hover {
-  background: #2980b9;
+  background: rgba(52, 152, 219, 0.15) !important;
+  border-color: #3498db !important;
+  color: #3498db !important;
 }
 
-/* mobile fallback */
+/* Responsive */
 @media (max-width: 768px) {
   .apply-content,
   .interview-section {
