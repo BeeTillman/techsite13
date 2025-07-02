@@ -31429,9 +31429,9 @@ const Apply = ({ isVisible  })=>{
     _s();
     const sectionRef = (0, _react.useRef)(null);
     const formRef = (0, _react.useRef)(null);
+    const fileInputRef = (0, _react.useRef)(null);
     const [status, setStatus] = (0, _react.useState)("idle");
     const [resumeName, setResumeName] = (0, _react.useState)("");
-    // Fade-in perks section
     (0, _react.useEffect)(()=>{
         const obs = new IntersectionObserver(([entry])=>entry.isIntersecting && entry.target.classList.add("visible"), {
             threshold: 0.1
@@ -31447,19 +31447,17 @@ const Apply = ({ isVisible  })=>{
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setStatus("sending");
-        // Upload resume to Firebase
-        const fileInput = formRef.current.querySelector('input[name="resume"]');
-        const file = fileInput.files[0];
-        if (!file) {
+        const fileEl = fileInputRef.current;
+        if (!fileEl || !fileEl.files.length) {
             alert("Please upload a resume before submitting.");
             setStatus("idle");
             return;
         }
+        const file = fileEl.files[0];
         try {
             const fbRef = (0, _storage.ref)((0, _firebase.storage), `resumes/${Date.now()}_${file.name}`);
             await (0, _storage.uploadBytes)(fbRef, file);
             const downloadURL = await (0, _storage.getDownloadURL)(fbRef);
-            // Insert download URL into hidden field
             let urlField = formRef.current.querySelector('input[name="resume_url"]');
             if (!urlField) {
                 urlField = document.createElement("input");
@@ -31468,9 +31466,7 @@ const Apply = ({ isVisible  })=>{
                 formRef.current.appendChild(urlField);
             }
             urlField.value = downloadURL;
-            // Send email via EmailJS
-            await (0, _browserDefault.default).sendForm("service_19px7xt", "template_lyrqimq", formRef.current, "AD9kASCtB252sXVHL" // public key
-            );
+            await (0, _browserDefault.default).sendForm("service_19px7xt", "template_lyrqimq", formRef.current, "AD9kASCtB252sXVHL");
             setStatus("success");
         } catch (err) {
             console.error("Apply form error:", err);
@@ -31486,7 +31482,7 @@ const Apply = ({ isVisible  })=>{
                 className: "section-overlay overlay-top"
             }, void 0, false, {
                 fileName: "src/Components/Apply.jsx",
-                lineNumber: 90,
+                lineNumber: 77,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31496,153 +31492,79 @@ const Apply = ({ isVisible  })=>{
                         children: "Perks & Benefits"
                     }, void 0, false, {
                         fileName: "src/Components/Apply.jsx",
-                        lineNumber: 94,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "benefits-grid",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            {
+                                icon: (0, _freeSolidSvgIcons.faUmbrella),
+                                title: "Generous Paid Time Off",
+                                desc: "You work better when you live better."
+                            },
+                            {
+                                icon: (0, _freeSolidSvgIcons.faPiggyBank),
+                                title: "Generous 401k Matching",
+                                desc: "We match 50% of all pre-tax 401(k) contributions you make."
+                            },
+                            {
+                                icon: (0, _freeSolidSvgIcons.faHeartbeat),
+                                title: "Health Insurance",
+                                desc: "Top-notch medical, dental, and vision coverage at zero cost."
+                            },
+                            {
+                                icon: (0, _freeSolidSvgIcons.faUsers),
+                                title: "Team Bonding",
+                                desc: "Collaborate, innovate, and grow in our team-driven culture."
+                            }, 
+                        ].map(({ icon , title , desc  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "benefit-card",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
-                                        icon: (0, _freeSolidSvgIcons.faUmbrella),
+                                        icon: icon,
                                         className: "benefit-icon"
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 97,
-                                        columnNumber: 13
+                                        lineNumber: 106,
+                                        columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Generous Paid Time Off"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 98,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "You work better when you live better."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 99,
-                                        columnNumber: 13
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Components/Apply.jsx",
-                                lineNumber: 96,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "benefit-card",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
-                                        icon: (0, _freeSolidSvgIcons.faPiggyBank),
-                                        className: "benefit-icon"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 102,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Generous 401k Matching"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 103,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "We match 50% of all pre-tax 401(k) contributions you make."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 104,
-                                        columnNumber: 13
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Components/Apply.jsx",
-                                lineNumber: 101,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "benefit-card",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
-                                        icon: (0, _freeSolidSvgIcons.faHeartbeat),
-                                        className: "benefit-icon"
+                                        children: title
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
                                         lineNumber: 107,
-                                        columnNumber: 13
+                                        columnNumber: 15
                                     }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Health Insurance"
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                        children: desc
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
                                         lineNumber: 108,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "Top-notch medical, dental, and vision coverage at zero cost."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 109,
-                                        columnNumber: 13
+                                        columnNumber: 15
                                     }, undefined)
                                 ]
-                            }, void 0, true, {
+                            }, title, true, {
                                 fileName: "src/Components/Apply.jsx",
-                                lineNumber: 106,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "benefit-card",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
-                                        icon: (0, _freeSolidSvgIcons.faUsers),
-                                        className: "benefit-icon"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 112,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Team Bonding"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 113,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "Collaborate, innovate, and grow in our team-driven culture."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 114,
-                                        columnNumber: 13
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Components/Apply.jsx",
-                                lineNumber: 111,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                                lineNumber: 105,
+                                columnNumber: 13
+                            }, undefined))
+                    }, void 0, false, {
                         fileName: "src/Components/Apply.jsx",
-                        lineNumber: 95,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Apply.jsx",
-                lineNumber: 93,
+                lineNumber: 80,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "section-overlay overlay-bottom"
             }, void 0, false, {
                 fileName: "src/Components/Apply.jsx",
-                lineNumber: 120,
+                lineNumber: 115,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31654,7 +31576,7 @@ const Apply = ({ isVisible  })=>{
                             children: "Submit Your Application"
                         }, void 0, false, {
                             fileName: "src/Components/Apply.jsx",
-                            lineNumber: 125,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -31662,7 +31584,7 @@ const Apply = ({ isVisible  })=>{
                             children: "Take the first step towards our team"
                         }, void 0, false, {
                             fileName: "src/Components/Apply.jsx",
-                            lineNumber: 126,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -31679,12 +31601,12 @@ const Apply = ({ isVisible  })=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 134,
+                                        lineNumber: 125,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 133,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31696,12 +31618,12 @@ const Apply = ({ isVisible  })=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 137,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 136,
+                                    lineNumber: 127,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31717,7 +31639,7 @@ const Apply = ({ isVisible  })=>{
                                                 children: "How did you hear about us?"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 141,
+                                                lineNumber: 132,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -31725,7 +31647,7 @@ const Apply = ({ isVisible  })=>{
                                                 children: "Career Fair"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 142,
+                                                lineNumber: 135,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -31733,7 +31655,7 @@ const Apply = ({ isVisible  })=>{
                                                 children: "Web"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 143,
+                                                lineNumber: 136,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -31741,7 +31663,7 @@ const Apply = ({ isVisible  })=>{
                                                 children: "Word of Mouth"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 144,
+                                                lineNumber: 137,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -31749,18 +31671,18 @@ const Apply = ({ isVisible  })=>{
                                                 children: "Other"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 145,
+                                                lineNumber: 138,
                                                 columnNumber: 17
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 140,
+                                        lineNumber: 131,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 139,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31772,12 +31694,12 @@ const Apply = ({ isVisible  })=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 149,
+                                        lineNumber: 142,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 148,
+                                    lineNumber: 141,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31788,12 +31710,12 @@ const Apply = ({ isVisible  })=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 152,
+                                        lineNumber: 145,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 151,
+                                    lineNumber: 144,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31803,30 +31725,32 @@ const Apply = ({ isVisible  })=>{
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                 type: "file",
+                                                name: "resume",
                                                 accept: ".pdf,.doc,.docx",
                                                 required: true,
-                                                onChange: handleFileChange
+                                                onChange: handleFileChange,
+                                                ref: fileInputRef
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 156,
+                                                lineNumber: 149,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: resumeName || "Upload Resume"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Apply.jsx",
-                                                lineNumber: 162,
+                                                lineNumber: 157,
                                                 columnNumber: 17
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/Apply.jsx",
-                                        lineNumber: 155,
+                                        lineNumber: 148,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 154,
+                                    lineNumber: 147,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -31835,34 +31759,34 @@ const Apply = ({ isVisible  })=>{
                                     children: status === "sending" ? "Sending…" : status === "success" ? "Sent!" : status === "error" ? "Try Again" : "Submit Application"
                                 }, void 0, false, {
                                     fileName: "src/Components/Apply.jsx",
-                                    lineNumber: 165,
+                                    lineNumber: 160,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Apply.jsx",
-                            lineNumber: 128,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Apply.jsx",
-                    lineNumber: 124,
+                    lineNumber: 119,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Apply.jsx",
-                lineNumber: 123,
+                lineNumber: 118,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/Components/Apply.jsx",
-        lineNumber: 84,
+        lineNumber: 75,
         columnNumber: 5
     }, undefined);
 };
-_s(Apply, "JWDdsUZV5yN0xk6EZfiVJ9BbfF4=");
+_s(Apply, "Y9q649MbYxd6qKKkD6tgIFwSKvQ=");
 _c = Apply;
 Apply.propTypes = {
     isVisible: (0, _propTypesDefault.default).bool.isRequired
