@@ -1,15 +1,9 @@
 // src/Components/Apply.jsx
-
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import emailjs from "@emailjs/browser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUmbrella,
-  faPiggyBank,
-  faHeartbeat,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUmbrella, faPiggyBank, faHeartbeat, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import "../styles/Apply.css";
@@ -17,10 +11,10 @@ import "../styles/Apply.css";
 const Apply = ({ isVisible }) => {
   const sectionRef = useRef(null);
   const formRef = useRef(null);
+  const fileInputRef = useRef(null);
   const [status, setStatus] = useState("idle");
   const [resumeName, setResumeName] = useState("");
 
-  // Fade-in perks section
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && entry.target.classList.add("visible"),
@@ -41,21 +35,19 @@ const Apply = ({ isVisible }) => {
     e.preventDefault();
     setStatus("sending");
 
-    // Upload resume to Firebase
-    const fileInput = formRef.current.querySelector('input[name="resume"]');
-    const file = fileInput.files[0];
-    if (!file) {
+    const fileEl = fileInputRef.current;
+    if (!fileEl || !fileEl.files.length) {
       alert("Please upload a resume before submitting.");
       setStatus("idle");
       return;
     }
+    const file = fileEl.files[0];
 
     try {
       const fbRef = storageRef(storage, `resumes/${Date.now()}_${file.name}`);
       await uploadBytes(fbRef, file);
       const downloadURL = await getDownloadURL(fbRef);
 
-      // Insert download URL into hidden field
       let urlField = formRef.current.querySelector('input[name="resume_url"]');
       if (!urlField) {
         urlField = document.createElement("input");
@@ -65,12 +57,11 @@ const Apply = ({ isVisible }) => {
       }
       urlField.value = downloadURL;
 
-      // Send email via EmailJS
       await emailjs.sendForm(
-        "service_19px7xt", // service ID
-        "template_lyrqimq", // template ID
+        "service_19px7xt",
+        "template_lyrqimq",
         formRef.current,
-        "AD9kASCtB252sXVHL" // public key
+        "AD9kASCtB252sXVHL"
       );
 
       setStatus("success");
@@ -81,42 +72,46 @@ const Apply = ({ isVisible }) => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="apply"
-      className="apply-section section-transition"
-    >
-      {/* Top fade-over */}
+    <section ref={sectionRef} id="apply" className="apply-section section-transition">
+      {/* Top fade */}
       <div className="section-overlay overlay-top" />
 
       {/* Perks & Benefits */}
       <div className="apply-content">
         <h2>Perks &amp; Benefits</h2>
         <div className="benefits-grid">
-          <div className="benefit-card">
-            <FontAwesomeIcon icon={faUmbrella} className="benefit-icon" />
-            <h3>Generous Paid Time Off</h3>
-            <p>You work better when you live better.</p>
-          </div>
-          <div className="benefit-card">
-            <FontAwesomeIcon icon={faPiggyBank} className="benefit-icon" />
-            <h3>Generous 401k Matching</h3>
-            <p>We match 50% of all pre-tax 401(k) contributions you make.</p>
-          </div>
-          <div className="benefit-card">
-            <FontAwesomeIcon icon={faHeartbeat} className="benefit-icon" />
-            <h3>Health Insurance</h3>
-            <p>Top-notch medical, dental, and vision coverage at zero cost.</p>
-          </div>
-          <div className="benefit-card">
-            <FontAwesomeIcon icon={faUsers} className="benefit-icon" />
-            <h3>Team Bonding</h3>
-            <p>Collaborate, innovate, and grow in our team-driven culture.</p>
-          </div>
+          {[
+            {
+              icon: faUmbrella,
+              title: "Generous Paid Time Off",
+              desc: "You work better when you live better.",
+            },
+            {
+              icon: faPiggyBank,
+              title: "Generous 401k Matching",
+              desc: "We match 50% of all pre-tax 401(k) contributions you make.",
+            },
+            {
+              icon: faHeartbeat,
+              title: "Health Insurance",
+              desc: "Top-notch medical, dental, and vision coverage at zero cost.",
+            },
+            {
+              icon: faUsers,
+              title: "Team Bonding",
+              desc: "Collaborate, innovate, and grow in our team-driven culture.",
+            },
+          ].map(({ icon, title, desc }) => (
+            <div className="benefit-card" key={title}>
+              <FontAwesomeIcon icon={icon} className="benefit-icon" />
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Bottom fade-over */}
+      {/* Bottom fade */}
       <div className="section-overlay overlay-bottom" />
 
       {/* Application Form */}
@@ -125,11 +120,7 @@ const Apply = ({ isVisible }) => {
           <h2>Submit Your Application</h2>
           <p className="subtitle">Take the first step towards our team</p>
 
-          <form
-            ref={formRef}
-            className="application-form"
-            onSubmit={handleSubmit}
-          >
+          <form ref={formRef} className="application-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <input type="text" name="applicant_name" placeholder="Name" required />
             </div>
@@ -138,7 +129,9 @@ const Apply = ({ isVisible }) => {
             </div>
             <div className="form-group">
               <select name="source" required defaultValue="">
-                <option value="" disabled>How did you hear about us?</option>
+                <option value="" disabled>
+                  How did you hear about us?
+                </option>
                 <option value="career_fair">Career Fair</option>
                 <option value="web">Web</option>
                 <option value="word_of_mouth">Word of Mouth</option>
@@ -155,15 +148,23 @@ const Apply = ({ isVisible }) => {
               <label className={`file-upload ${resumeName ? "selected" : ""}`}>
                 <input
                   type="file"
+                  name="resume"
                   accept=".pdf,.doc,.docx"
                   required
                   onChange={handleFileChange}
+                  ref={fileInputRef}
                 />
                 <span>{resumeName || "Upload Resume"}</span>
               </label>
             </div>
             <button type="submit" className="submit-btn">
-              {status === "sending" ? "Sending…" : status === "success" ? "Sent!" : status === "error" ? "Try Again" : "Submit Application"}
+              {status === "sending"
+                ? "Sending…"
+                : status === "success"
+                ? "Sent!"
+                : status === "error"
+                ? "Try Again"
+                : "Submit Application"}
             </button>
           </form>
         </div>
