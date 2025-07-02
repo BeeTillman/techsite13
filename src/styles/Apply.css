@@ -1,185 +1,180 @@
 .apply-section {
-    position: relative !important;
-    padding: 4rem 15% !important;
-    background-color: #101214 !important;
-    min-height: 100vh !important;
-    opacity: 1 !important;
-    transform: translateY(20px) !important;
-    transition: all 0.8s ease-out !important;
-  }
-  
-  .apply-section.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-  
-  .apply-content {
-    position: relative !important;
-    z-index: 2 !important;
-    text-align: center !important;
-  }
-  
-  .apply-content h2 {
-    margin-bottom: 3rem !important;
-    color: #FAF9F6 !important;
-  }
-  
-  .benefits-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 2rem !important;
-    margin-top: 3rem !important;
-  }
-  
-  .benefit-card {
-    background: rgba(255, 255, 255, 0.05) !important;
-    padding: 2rem !important;
-    border-radius: 10px !important;
-    transition: transform 0.3s ease !important;
-  }
-  
-  .benefit-card:hover {
-    transform: translateY(-5px) !important;
-  }
-  
-  .benefit-icon {
-    font-size: 2.5rem !important;
-    color: #3498db !important;
-    margin-bottom: 1.5rem !important;
-  }
-  
-  .benefit-card h3 {
-    color: #FAF9F6 !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  .benefit-card p {
-    color: #a0a0a0 !important;
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-  }
-  
-  @media (max-width: 768px) {
-    .benefits-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
+  position: relative;
+  padding-top: 8rem;
+  scroll-margin-top: 8rem;
+  background: url('../images/tpsiteSkylineStock5.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
 
+.apply-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.section-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 2;
+}
+.overlay-top {
+  top: 0;
+  background: linear-gradient(to bottom, #101214, transparent);
+}
+.overlay-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #101214, transparent);
+}
+
+/* perks content */
+.apply-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.apply-content h2 {
+  color: #faf9f6;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.benefit-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+}
+.benefit-icon {
+  font-size: 2.5rem;
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+.benefit-card h3 {
+  color: #faf9f6;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+.benefit-card p {
+  color: #a0a0a0;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.interview-section {
+  position: relative;
+  z-index: 3;
+  padding: 4rem 2rem 6rem;
+  text-align: center;
+}
+
+/* form styling */
+.application-section h2 {
+  color: #faf9f6;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+.application-section .subtitle {
+  color: #a0a0a0;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 2rem;
+}
+.application-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+.application-form .form-group input,
+.application-form .form-group select,
+.application-form .form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #1a1a1a !important;
+  color: #faf9f6;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: background 0.3s ease;
+}
+.application-form .form-group input:focus,
+.application-form .form-group select:focus,
+.application-form .form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+.file-upload {
+  position: relative;
+  display: inline-block;
+  background: #1a1a1a !important;
+  color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.file-upload:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.file-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.submit-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: #3498db;
+  color: #faf9f6;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.submit-btn:hover {
+  background: #2980b9;
+}
+
+/* mobile fallback */
+@media (max-width: 768px) {
+  .apply-content,
   .interview-section {
-    margin-top: 6rem !important;
-    text-align: center !important;
+    padding: 2rem 1rem;
   }
-  
-  .interview-section .subtitle {
-    color: #a0a0a0 !important;
-    margin-bottom: 3rem !important;
+  .benefits-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .process-grid {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 2rem !important;
-    margin-top: 3rem !important;
-  }
-  
-  .process-card {
-    background: rgba(255, 255, 255, 0.05) !important;
-    padding: 2rem !important;
-    border-radius: 10px !important;
-    transition: transform 0.3s ease !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-  
-  .process-card:hover {
-    transform: translateY(-5px) !important;
-  }
-  
-  .step-number {
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    color: #3498db !important;
-    margin-bottom: 1rem !important;
-    background: rgba(52, 152, 219, 0.1) !important;
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  
-  .process-card h3 {
-    color: #FAF9F6 !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  .process-card p {
-    color: #a0a0a0 !important;
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-  }
-  
-  @media (max-width: 768px) {
-    .process-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-
-  .application-section {
-    margin-top: 6rem !important;
-    text-align: center !important;
-  }
-  
-  .application-form {
-    max-width: 600px !important;
-    margin: 3rem auto !important;
-    text-align: left !important;
-  }
-  
-  .application-form select {
-    width: 100% !important;
-    padding: 1rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 4px !important;
-    background: rgba(18, 18, 18, 0.95) !important;
-    color: #FAF9F6 !important;
-    font-family: "proxima-nova", sans-serif !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  .application-form select option {
-    background: #101214 !important;
-  }
-  
-  .file-upload {
-    display: block !important;
-    position: relative !important;
-    padding: 1rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 4px !important;
-    background: rgba(18, 18, 18, 0.95) !important;
-    color: #FAF9F6 !important;
-    cursor: pointer !important;
-    text-align: center !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  .file-upload:hover {
-    border-color: #3498db !important;
-  }
-  
-  .file-upload input[type="file"] {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    opacity: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    cursor: pointer !important;
-  }
-  
-  .file-upload span {
-    color: #FAF9F6 !important;
-  }
+}

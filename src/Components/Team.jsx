@@ -77,15 +77,11 @@ const Team = () => {
       return teamMembers.slice(start, end);
     };
 
-    // Set initial members
     setVisibleMembers(getNextGroup(0));
 
-    // Set up interval for cycling members
     const interval = setInterval(() => {
-      // Start transition
       setIsTransitioning(true);
 
-      // After fade out, update members
       setTimeout(() => {
         setCurrentGroupIndex((prevIndex) => {
           const nextIndex = prevIndex + 1;
@@ -93,17 +89,15 @@ const Team = () => {
           return nextIndex;
         });
 
-        // After new members are set, remove transition state
         setTimeout(() => {
           setIsTransitioning(false);
-        }, 50); // Short delay to ensure DOM update
-      }, 600); // Match the CSS transition duration
+        }, 50);
+      }, 600);
     }, CYCLE_INTERVAL);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Add a useEffect to handle visibility when members change
   useEffect(() => {
     if (!isTransitioning) {
       const members = document.querySelectorAll(".team-member");

@@ -41,3 +41,16 @@ h1, h2, h3, p {
   bottom: 0 !important;
   background: linear-gradient(to top, #101214 0%, rgba(16, 18, 20, 0) 100%) !important;
 }
+
+/* Overrides */
+.carousel .slide .legend {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(10%);
+  
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}

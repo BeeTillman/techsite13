@@ -3,7 +3,9 @@
     display: flex !important;
     justify-content: space-between !important;
     gap: 2rem !important;
-    background: transparent !important;
+    background: rgba(18, 18, 18, 0.4) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     padding: 2rem 5rem !important;
     top: 0 !important;
     width: 100% !important;
