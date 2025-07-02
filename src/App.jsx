@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
 import About from "./Components/About";
 import Team from "./Components/Team";
 import Contact from "./Components/Contact";
 import Apply from "./Components/Apply";
-
 import "./styles/main.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const App = () => {
-  const [isApplyVisible, setIsApplyVisible] = React.useState(false);
+  const [isApplyVisible, setIsApplyVisible] = useState(false);
 
-  const handleApplyClick = () => {
+  const handleApplyClick = (event) => {
+    event?.preventDefault();
+
     setIsApplyVisible(true);
+
     setTimeout(() => {
-      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+      const applySection = document.getElementById("apply");
+      if (applySection) {
+        applySection.scrollIntoView({ behavior: "smooth" });
+      }
     }, 100);
   };
 

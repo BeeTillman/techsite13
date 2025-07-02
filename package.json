@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Techport13",
   "source": "src/index.html",
-  "homepage": "http://beetillman.github.io/techsite13",
+  "homepage": "https://BeeTillman.github.io/techsite13",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "build-gh": "parcel build --public-url 'https://{github-username}.github.io/{repo-name}'",
+    "build-gh": "parcel build src/index.html --public-url '/techsite13/'",
     "predeploy": "npm run build-gh",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\""
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
