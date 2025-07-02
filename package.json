@@ -7,7 +7,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "build-gh": "parcel build src/index.html --public-url '/techsite13/'",
+    "build-gh": "parcel build src/index.html --public-url '/techsite13/' --dist-dir build",
     "predeploy": "npm run build-gh",
     "deploy": "gh-pages -d build",
     "lint": "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
