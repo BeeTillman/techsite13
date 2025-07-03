@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('../images/tpsiteSpaceStock3.jpg') no-repeat center center;
+  background: url('../images/tpsiteSpaceStock2.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   transition: opacity 0.5s ease-in-out;
@@ -16,14 +16,14 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center,
-              rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.8) 100%);
+              rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.05) 100%);
   z-index: 1;
 }
 
 .contact-content {
   position: relative;
   z-index: 2;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
   padding: 3rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);

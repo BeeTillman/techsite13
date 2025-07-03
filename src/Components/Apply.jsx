@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import emailjs from "@emailjs/browser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUmbrella, faPiggyBank, faHeartbeat, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faPiggyBank, faHeartbeat, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import "../styles/Apply.css";
@@ -82,11 +82,6 @@ const Apply = ({ isVisible }) => {
         <div className="benefits-grid">
           {[
             {
-              icon: faUmbrella,
-              title: "Generous Paid Time Off",
-              desc: "You work better when you live better.",
-            },
-            {
               icon: faPiggyBank,
               title: "401k Matching",
               desc: "We match 50% of all pre-tax 401(k) contributions you make.",
@@ -94,7 +89,7 @@ const Apply = ({ isVisible }) => {
             {
               icon: faHeartbeat,
               title: "Health Insurance",
-              desc: "Top-notch medical, dental, and vision coverage at zero cost.",
+              desc: "Top-notch medical, dental, and vision coverage.",
             },
             {
               icon: faUsers,
@@ -135,6 +130,7 @@ const Apply = ({ isVisible }) => {
                 <option value="career_fair">Career Fair</option>
                 <option value="web">Web</option>
                 <option value="word_of_mouth">Word of Mouth</option>
+                <option value="handshake">Handshake</option>
                 <option value="other">Other</option>
               </select>
             </div>
