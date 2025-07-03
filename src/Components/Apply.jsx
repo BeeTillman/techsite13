@@ -88,7 +88,7 @@ const Apply = ({ isVisible }) => {
             },
             {
               icon: faPiggyBank,
-              title: "Generous 401k Matching",
+              title: "401k Matching",
               desc: "We match 50% of all pre-tax 401(k) contributions you make.",
             },
             {
@@ -99,7 +99,7 @@ const Apply = ({ isVisible }) => {
             {
               icon: faUsers,
               title: "Team Bonding",
-              desc: "Collaborate, innovate, and grow in our team-driven culture.",
+              desc: "Work hard, play hard.",
             },
           ].map(({ icon, title, desc }) => (
             <div className="benefit-card" key={title}>
