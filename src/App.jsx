@@ -1,3 +1,5 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
@@ -8,32 +10,24 @@ import Apply from "./Components/Apply";
 import "./styles/main.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const App = () => {
-  const [isApplyVisible, setIsApplyVisible] = useState(false);
-
-  const handleApplyClick = (event) => {
-    event?.preventDefault();
-
-    setIsApplyVisible(true);
-
-    setTimeout(() => {
-      const applySection = document.getElementById("apply");
-      if (applySection) {
-        applySection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
+function App() {
   return (
-    <div id="main">
-      <Header onApplyClick={handleApplyClick} />
-      <Hero />
-      <About />
-      <Team />
-      <Contact />
-      <Apply isVisible={isApplyVisible} />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <Header />
+            <Hero />
+            <About />
+            <Team />
+            <Contact />
+          </>
+        }
+      />
+      <Route path="/apply" element={<Apply isVisible={true} />} />
+    </Routes>
   );
-};
+}
 
 export default App;

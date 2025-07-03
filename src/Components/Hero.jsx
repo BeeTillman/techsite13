@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "../styles/Hero.css";
 
-import image1 from "../images/tpsiteOfficeStock1.jpg";
-import image2 from "../images/tpsiteSkylineStock6.jpg";
-import image3 from "../images/tpsiteSkylineStock8.jpg";
+import image1 from "url:../images/tpsiteOfficeStock1.jpg";
+import image2 from "url:../images/tpsiteSkylineStock6.jpg";
+import image3 from "url:../images/tpsiteSkylineStock8.jpg";
 
 const quotes = [
   "Dedicated exclusively to the ServiceNow Platform.",
   "Recognized as a Premier Partner with ServiceNow.",
-  "",
+  "Empowering businesses through digital transformation.",
 ];
 
 const Hero = () => {

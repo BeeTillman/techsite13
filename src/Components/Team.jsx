@@ -1,29 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Team.css";
-import tpsitePfpBTillman from "../images/tpsitePfpBTillman.png";
-import tpsitePfpADino from "../images/tpsitePfpADino.png";
-import tpsitePfpARobben from "../images/tpsitePfpARobben.png";
-import tpsitePfpDGreen from "../images/tpsitePfpDGreen.png";
-import tpsitePfpDDiener from "../images/tpsitePfpDDiener.png";
-import tpsitePfpHBailey from "../images/tpsitePfpHBailey.png";
-import tpsitePfpJDavenport from "../images/tpsitePfpJDavenport.png";
-import tpsitePfpJJJohnson from "../images/tpsitePfpJJohnson.png";
-import tpsitePfpJEason from "../images/tpsitePfpJEason.png";
-import tpsitePfpJClements from "../images/tpsitePfpJClements.png";
-import tpsitePfpJMontag from "../images/tpsitePfpJMontag.png";
-import tpsitePfpJLittle from "../images/tpsitePfpJLittle.png";
-import tpsitePfpKLindsay from "../images/tpsitePfpKLindsay.png";
-import tpsitePfpKHarrison from "../images/tpsitePfpKHarrison.png";
-import tpsitePfpLFouts from "../images/tpsitePfpLFouts.png";
-import tpsitePfpMPatel from "../images/tpsitePfpMPatel.png";
-import tpsitePfpMDebs from "../images/tpsitePfpMDebs.png";
-import tpsitePfpMThrasher from "../images/tpsitePfpMThrasher.png";
-import tpsitePfpPHutson from "../images/tpsitePfpPhutson.png";
-import tpsitePfpSSteen from "../images/tpsitePfpSSteen.png";
-import tpsitePfpSDAngelo from "../images/tpsitePfpSDAngelo.png";
-import tpsitePfpSChaney from "../images/tpsitePfpSChaney.png";
-import tpsitePfpZWatkins from "../images/tpsitePfpZWatkins.png";
-import tpsitePfpBVargas from "../images/tpsitePfpBVargas.png";
+import tpsitePfpBTillman from "url:../images/tpsitePfpBTillman.png";
+import tpsitePfpADino from "url:../images/tpsitePfpADino.png";
+import tpsitePfpARobben from "url:../images/tpsitePfpARobben.png";
+import tpsitePfpDGreen from "url:../images/tpsitePfpDGreen.png";
+import tpsitePfpDDiener from "url:../images/tpsitePfpDDiener.png";
+import tpsitePfpHBailey from "url:../images/tpsitePfpHBailey.png";
+import tpsitePfpJDavenport from "url:../images/tpsitePfpJDavenport.png";
+import tpsitePfpJJJohnson from "url:../images/tpsitePfpJJohnson.png";
+import tpsitePfpJEason from "url:../images/tpsitePfpJEason.png";
+import tpsitePfpJClements from "url:../images/tpsitePfpJClements.png";
+import tpsitePfpJMontag from "url:../images/tpsitePfpJMontag.png";
+import tpsitePfpJLittle from "url:../images/tpsitePfpJLittle.png";
+import tpsitePfpKLindsay from "url:../images/tpsitePfpKLindsay.png";
+import tpsitePfpKHarrison from "url:../images/tpsitePfpKHarrison.png";
+import tpsitePfpLFouts from "url:../images/tpsitePfpLFouts.png";
+import tpsitePfpMPatel from "url:../images/tpsitePfpMPatel.png";
+import tpsitePfpMDebs from "url:../images/tpsitePfpMDebs.png";
+import tpsitePfpMThrasher from "url:../images/tpsitePfpMThrasher.png";
+import tpsitePfpPHutson from "url:../images/tpsitePfpPhutson.png";
+import tpsitePfpSSteen from "url:../images/tpsitePfpSSteen.png";
+import tpsitePfpSDAngelo from "url:../images/tpsitePfpSDAngelo.png";
+import tpsitePfpSChaney from "url:../images/tpsitePfpSChaney.png";
+import tpsitePfpZWatkins from "url:../images/tpsitePfpZWatkins.png";
+import tpsitePfpBVargas from "url:../images/tpsitePfpBVargas.png";
 
 const teamMembers = [
   { name: "Alec Dino", image: tpsitePfpADino },
@@ -38,7 +38,7 @@ const teamMembers = [
   { name: "Josh Eason", image: tpsitePfpJEason },
   { name: "Josh Clements", image: tpsitePfpJClements },
   { name: "Joshua Montag", image: tpsitePfpJMontag },
-  { name: "Justin Little", image: tpsitePfpJLittle },
+  { name: "John Little", image: tpsitePfpJLittle },
   { name: "Kevin Lindsay", image: tpsitePfpKLindsay },
   { name: "Kyle Harrison", image: tpsitePfpKHarrison },
   { name: "Lexi Fouts", image: tpsitePfpLFouts },

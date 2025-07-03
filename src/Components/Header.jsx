@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
-import logo from "../images/tpsiteTpLogo.png";
+import logo from "url:../images/tpsiteTpLogo.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ onApplyClick }) => {
   const [isHeaderVisible, setHeaderVisibility] = useState(true);
@@ -74,9 +75,9 @@ const Header = ({ onApplyClick }) => {
         <a href="#contact" className="nav-link">
           Contact
         </a>
-        <a href="#apply" className="nav-link" onClick={onApplyClick}>
+        <Link to="/apply" className="nav-link" onClick={onApplyClick}>
           Apply
-        </a>
+        </Link>
       </div>
     </div>
   );

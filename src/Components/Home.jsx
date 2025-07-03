@@ -3,7 +3,7 @@ import arrowSvg from "../images/down-arrow.svg";
 import PropTypes from "prop-types";
 import "../Home.css";
 
-import image from "../images/PortfolioHomeBG2.jpg";
+import image from "url:../images/PortfolioHomeBG2.jpg";
 
 const imageAltText = "Techport 13 office";
 
