@@ -9,7 +9,7 @@
     "build":     "parcel build src/index.html",
     "build-gh": "parcel build src/index.html --public-url './' --dist-dir build",
     "predeploy": "npm run build-gh",
-    "deploy":    "gh-pages -d dist",
+    "deploy":    "gh-pages -d build",
     "lint":      "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
     "format":    "prettier --write \"src/**/*.{js,jsx,css,html}\""
   },
