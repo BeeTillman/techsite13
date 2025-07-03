@@ -1,68 +1,57 @@
+// src/Components/Header.jsx
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
 import logo from "url:../images/tpsiteTpLogo.png";
-import { Link } from "react-router-dom";
 
-const Header = ({ onApplyClick }) => {
+const Header = () => {
   const [isHeaderVisible, setHeaderVisibility] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let timeoutId;
-    let scrollFinishedTimeoutId;
+    let hideTimeout;
+    let finishScrollTimeout;
 
     const handleScroll = () => {
-      const isOnComputer = window.innerWidth > 768;
+      if (window.innerWidth > 768) {
+        const heroSection = document.getElementById("hero");
+        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        const scrollY = window.scrollY;
 
-      if (isOnComputer) {
-        const homeSection = document.getElementById("home");
-
-        if (homeSection) {
-          const homeSectionHeight = homeSection.offsetHeight;
-          const scrollPosition = window.scrollY;
-
-          if (scrollPosition <= homeSectionHeight) {
-            setHeaderVisibility(true);
-            return;
-          }
+        if (scrollY <= heroHeight) {
+          setHeaderVisibility(true);
+        } else {
+          setHeaderVisibility(false);
+          clearTimeout(hideTimeout);
+          hideTimeout = setTimeout(() => setHeaderVisibility(true), 2000);
+          clearTimeout(finishScrollTimeout);
+          finishScrollTimeout = setTimeout(() => setHeaderVisibility(true), 300);
         }
-
-        setHeaderVisibility(false);
-
-        clearTimeout(timeoutId);
-
-        timeoutId = setTimeout(() => {
-          setHeaderVisibility(true);
-        }, 2000);
-
-        clearTimeout(scrollFinishedTimeoutId);
-
-        scrollFinishedTimeoutId = setTimeout(() => {
-          setHeaderVisibility(true);
-        }, 300);
       } else {
         setHeaderVisibility(true);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
+      clearTimeout(hideTimeout);
+      clearTimeout(finishScrollTimeout);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
+    setMobileMenuOpen((open) => !open);
   };
 
   return (
     <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
       <img src={logo} alt="Techport 13 Logo" className="header-logo" />
+
       <button className="menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
         ☰
       </button>
-      <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
+
+      <nav className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
         <a href="#hero" className="nav-link">
           Home
         </a>
@@ -75,10 +64,7 @@ const Header = ({ onApplyClick }) => {
         <a href="#contact" className="nav-link">
           Contact
         </a>
-        <Link to="/apply" className="nav-link" onClick={onApplyClick}>
-          Apply
-        </Link>
-      </div>
+      </nav>
     </div>
   );
 };

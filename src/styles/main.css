@@ -54,3 +54,113 @@ h1, h2, h3, p {
   font-size: 1.25rem;
   line-height: 1.4;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h3, p {
+    font-size: 1rem !important;
+  }
+  .section-overlay {
+    height: 100px !important;
+  }
+  .carousel .slide .legend {
+    font-size: 1rem !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 0.5rem !important;
+  }
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  h3, p {
+    font-size: 0.9rem !important;
+  }
+  .section-overlay {
+    height: 75px !important;
+  }
+  .carousel .slide .legend {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+}
+
+/* ============ MOBILE ADJUSTMENTS ============ */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto !important;
+    padding-bottom: 1rem !important;
+  }
+  .hero-section .carousel .slide,
+  .hero-section .carousel .slide img {
+    height: auto !important;
+    max-height: none !important;
+  }
+  .hero-section .carousel .legend {
+    position: relative !important;
+    bottom: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0.5rem 0 !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content,
+  .contact-content {
+    width: 90% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    padding: 1rem 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem !important;
+  }
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3, p { font-size: 1rem !important; }
+}
+@media (max-width: 480px) {
+  body {
+    padding: 0 0.5rem !important;
+  }
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3, p { font-size: 0.9rem !important; }
+}

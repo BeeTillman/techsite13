@@ -24,6 +24,9 @@ import tpsitePfpSDAngelo from "url:../images/tpsitePfpSDAngelo.png";
 import tpsitePfpSChaney from "url:../images/tpsitePfpSChaney.png";
 import tpsitePfpZWatkins from "url:../images/tpsitePfpZWatkins.png";
 import tpsitePfpBVargas from "url:../images/tpsitePfpBVargas.png";
+import tpsitePfpCBrauer from "url:../images/tpsitePfpCBrauer.png";
+import tpsitePfpJShirling from "url:../images/tpsitePfpJShirling.png";
+import tpsitePfpNAkula from "url:../images/tpsitePfpNAkula.png";
 
 const teamMembers = [
   { name: "Alec Dino", image: tpsitePfpADino },
@@ -35,7 +38,7 @@ const teamMembers = [
   { name: "Hunter Bailey", image: tpsitePfpHBailey },
   { name: "Jerrod Davenport", image: tpsitePfpJDavenport },
   { name: "Jordan Johnson", image: tpsitePfpJJJohnson },
-  { name: "Josh Eason", image: tpsitePfpJEason },
+  { name: "Jordan Eason", image: tpsitePfpJEason },
   { name: "Josh Clements", image: tpsitePfpJClements },
   { name: "Joshua Montag", image: tpsitePfpJMontag },
   { name: "John Little", image: tpsitePfpJLittle },
@@ -50,30 +53,47 @@ const teamMembers = [
   { name: "Stephen D'Angelo", image: tpsitePfpSDAngelo },
   { name: "Steven Chaney", image: tpsitePfpSChaney },
   { name: "Zach Watkins", image: tpsitePfpZWatkins },
+  { name: "Calvin Brauer", image: tpsitePfpCBrauer },
+  { name: "Jeff Shirling", image: tpsitePfpJShirling },
+  { name: "Nithya Akula", image: tpsitePfpNAkula },
 ];
+
+const MEMBERS_TO_SHOW = 10;
+const CYCLE_INTERVAL = 12500;
 
 const Team = () => {
   const sectionRef = useRef(null);
+  const [isSectionVisible, setSectionVisible] = useState(false);
   const [visibleMembers, setVisibleMembers] = useState([]);
   const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const MEMBERS_TO_SHOW = 10;
-  const CYCLE_INTERVAL = 12500;
 
   useEffect(() => {
-    const getNextGroup = (index) => {
-      const totalGroups = Math.ceil(teamMembers.length / MEMBERS_TO_SHOW);
-      const normalizedIndex = index % totalGroups;
-      const start = normalizedIndex * MEMBERS_TO_SHOW;
-      const end = Math.min(start + MEMBERS_TO_SHOW, teamMembers.length);
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
 
+  useEffect(() => {
+    const getNextGroup = (idx) => {
+      const totalGroups = Math.ceil(teamMembers.length / MEMBERS_TO_SHOW);
+      const normalized = idx % totalGroups;
+      const start = normalized * MEMBERS_TO_SHOW;
+      const end = Math.min(start + MEMBERS_TO_SHOW, teamMembers.length);
       if (end - start < MEMBERS_TO_SHOW) {
         return [
           ...teamMembers.slice(start),
           ...teamMembers.slice(0, MEMBERS_TO_SHOW - (end - start)),
         ];
       }
-
       return teamMembers.slice(start, end);
     };
 
@@ -83,15 +103,12 @@ const Team = () => {
       setIsTransitioning(true);
 
       setTimeout(() => {
-        setCurrentGroupIndex((prevIndex) => {
-          const nextIndex = prevIndex + 1;
-          setVisibleMembers(getNextGroup(nextIndex));
-          return nextIndex;
+        setCurrentGroupIndex((prev) => {
+          const next = prev + 1;
+          setVisibleMembers(getNextGroup(next));
+          return next;
         });
-
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 50);
+        setTimeout(() => setIsTransitioning(false), 50);
       }, 600);
     }, CYCLE_INTERVAL);
 
@@ -100,17 +117,16 @@ const Team = () => {
 
   useEffect(() => {
     if (!isTransitioning) {
-      const members = document.querySelectorAll(".team-member");
-      members.forEach((member) => {
-        member.classList.add("visible");
-      });
+      document.querySelectorAll(".team-member").forEach((x) => x.classList.add("visible"));
     }
   }, [visibleMembers, isTransitioning]);
 
   return (
-    <section ref={sectionRef} id="team" className="team-section section-transition">
-      <div className="section-overlay overlay-top"></div>
-      <div className="section-overlay overlay-bottom"></div>
+    <section
+      ref={sectionRef}
+      id="team"
+      className={`team-section section-transition ${isSectionVisible ? "visible" : ""}`}
+    >
       <div className="team-content">
         <h2>Meet Our Team</h2>
         <p className="subtitle">We pride ourselves on our people</p>
