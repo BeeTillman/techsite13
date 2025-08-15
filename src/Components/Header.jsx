@@ -43,6 +43,16 @@ const Header = () => {
     setMobileMenuOpen((open) => !open);
   };
 
+  // Smooth scroll handler for nav links
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
       <img src={logo} alt="Techport 13 Logo" className="header-logo" />
@@ -52,16 +62,16 @@ const Header = () => {
       </button>
 
       <nav className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-        <a href="#hero" className="nav-link">
+        <a href="#hero" className="nav-link" onClick={(e) => handleNavClick(e, "hero")}> 
           Home
         </a>
-        <a href="#about" className="nav-link">
+        <a href="#about" className="nav-link" onClick={(e) => handleNavClick(e, "about")}> 
           About
         </a>
-        <a href="#team" className="nav-link">
+        <a href="#team" className="nav-link" onClick={(e) => handleNavClick(e, "team")}> 
           Our Team
         </a>
-        <a href="#contact" className="nav-link">
+        <a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, "contact")}> 
           Contact
         </a>
       </nav>
