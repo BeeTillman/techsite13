@@ -1,46 +1,141 @@
-.about-section {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+.about {
+  align-items: flex-start;
+  padding: 120px 0;
+  background-color: var(--bg-primary);
+}
+
+.about .content h3 {
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.about .about-center {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: url('../images/tpsiteSkylineStock3.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  transition: opacity 0.5s ease-in-out;
 }
 
-.about-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center,
-              rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
-  z-index: 1;
-}
-
-.about-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  width: 90%;
-  text-align: center;
-  padding: 2rem;
-}
-
-@media (max-width: 768px) {
-  .about-section {
-    background-attachment: scroll;
-    padding: 2rem 1rem;
+@media (max-width: 992px) {
+  .about .about-center {
+    flex-direction: column;
   }
-  .about-content {
-    padding: 1rem;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.about .content ul i {
+  font-size: 20px;
+  padding-right: 8px;
+  color: var(--primary-light);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .content p.fst-italic {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.about img {
+  padding-right: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+/*--------------------------------------------------------------
+# Bootstrap Icons for check circles
+--------------------------------------------------------------*/
+.bi-check-circle::before {
+  content: "\f26a";
+}
+
+.bi-check-circle::before {
+  font-family: "bootstrap-icons";
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fallback for check circle */
+.bi-check-circle::before {
+  content: "✓";
+  font-family: sans-serif;
+  font-weight: bold;
+  color: var(--primary-light);
+}
+
+/*--------------------------------------------------------------
+# Responsive Design
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .about {
+    padding: 80px 0;
+  }
+  
+  .about .content h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .about .content p.fst-italic {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .about .content ul {
+    text-align: left;
+  }
+  
+  .about .content ul li {
+    margin-bottom: 15px;
+  }
+  
+  .about img {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .about .about-center {
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .about-content {
-    padding: 0.5rem;
+  .about {
+    padding: 60px 0;
+  }
+  
+  .about .content h3 {
+    font-size: 20px;
+  }
+  
+  .about .content p.fst-italic {
+    font-size: 14px;
+  }
+  
+  .about .content ul li {
+    font-size: 14px;
   }
 }

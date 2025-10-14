@@ -4,39 +4,17 @@ import "../styles/Header.css";
 import logo from "url:../images/tpsiteTpLogo.png";
 
 const Header = () => {
-  const [isHeaderVisible, setHeaderVisibility] = useState(true);
+  const [isHeaderScrolled, setHeaderScrolled] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let hideTimeout;
-    let finishScrollTimeout;
-
     const handleScroll = () => {
-      if (window.innerWidth > 768) {
-        const heroSection = document.getElementById("hero");
-        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
-        const scrollY = window.scrollY;
-
-        if (scrollY <= heroHeight) {
-          setHeaderVisibility(true);
-        } else {
-          setHeaderVisibility(false);
-          clearTimeout(hideTimeout);
-          hideTimeout = setTimeout(() => setHeaderVisibility(true), 2000);
-          clearTimeout(finishScrollTimeout);
-          finishScrollTimeout = setTimeout(() => setHeaderVisibility(true), 300);
-        }
-      } else {
-        setHeaderVisibility(true);
-      }
+      const scrollY = window.scrollY;
+      setHeaderScrolled(scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      clearTimeout(hideTimeout);
-      clearTimeout(finishScrollTimeout);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMobileMenu = () => {
@@ -54,28 +32,76 @@ const Header = () => {
   };
 
   return (
-    <div className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
-      <img src={logo} alt="Techport 13 Logo" className="header-logo" />
+    <header id="header" className={`${isHeaderScrolled ? 'header-scrolled' : ''}`}>
+      <div className="container d-flex align-items-center justify-content-between">
+        <a href="#hero" className="logo" aria-label="Techport13 Home">
+          <img src={logo} alt="Techport13 Logo" className="img-fluid" />
+        </a>
 
-      <button className="menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
-        ☰
-      </button>
+        <nav id="navbar" className="navbar" role="navigation" aria-label="Main navigation">
+          <ul role="menubar">
+            <li role="none">
+              <a className="nav-link scrollto active" href="#hero" role="menuitem" aria-current="page" onClick={(e) => handleNavClick(e, "hero")}>
+                Home
+              </a>
+            </li>
+            <li role="none">
+              <a className="nav-link scrollto" href="#about" role="menuitem" onClick={(e) => handleNavClick(e, "about")}>
+                About
+              </a>
+            </li>
+            <li role="none">
+              <a className="nav-link scrollto" href="#our-team" role="menuitem" onClick={(e) => handleNavClick(e, "our-team")}>
+                Our Team
+              </a>
+            </li>
+            <li role="none">
+              <a className="nav-link scrollto" href="#contact" role="menuitem" onClick={(e) => handleNavClick(e, "contact")}>
+                Contact
+              </a>
+            </li>
+          </ul>
+          <button 
+            className={`mobile-nav-toggle ${isMobileMenuOpen ? 'bi-x' : 'bi-list'}`} 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu" 
+            aria-expanded={isMobileMenuOpen}
+          >
+          </button>
+        </nav>
 
-      <nav className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-        <a href="#hero" className="nav-link" onClick={(e) => handleNavClick(e, "hero")}> 
-          Home
-        </a>
-        <a href="#about" className="nav-link" onClick={(e) => handleNavClick(e, "about")}> 
-          About
-        </a>
-        <a href="#team" className="nav-link" onClick={(e) => handleNavClick(e, "team")}> 
-          Our Team
-        </a>
-        <a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, "contact")}> 
-          Contact
-        </a>
-      </nav>
-    </div>
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="navbar-mobile">
+            <div className="mobile-nav-toggle" onClick={toggleMobileMenu}>
+              <i className="bi bi-x"></i>
+            </div>
+            <ul>
+              <li>
+                <a className="scrollto" href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a className="scrollto" href="#about" onClick={(e) => handleNavClick(e, "about")}>
+                  About
+                </a>
+              </li>
+              <li>
+                <a className="scrollto" href="#our-team" onClick={(e) => handleNavClick(e, "our-team")}>
+                  Our Team
+                </a>
+              </li>
+              <li>
+                <a className="scrollto" href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </header>
   );
 };
 

@@ -40,48 +40,70 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="contact-section section-transition">
-      <div className="section-overlay overlay-top"></div>
-      <div className="contact-content">
-        <h2>Contact Us</h2>
-
-        <div className="contact-info">
-          <div className="info-item">
-            <i className="fas fa-map-marker-alt"></i>
-            <span>4505 Peachtree Lakes Dr, Berkeley Lake, GA 30096</span>
-          </div>
-          <div className="info-item">
-            <i className="fas fa-envelope"></i>
-            <span>info@techport13.com</span>
-          </div>
-          <div className="info-item">
-            <i className="fas fa-phone"></i>
-            <span>+1 (404) 919-2660</span>
-          </div>
+    <section ref={sectionRef} id="contact" className="contact section-bg">
+      <div className="container" data-aos="fade-up">
+        <div className="section-title">
+          <h2>Contact</h2>
+          <p>Here at Techport13 we love making connections and meeting new people. If you're interested in joining our team or getting to know us please send us a message and we will get back to you soon.</p>
         </div>
 
-        <form ref={form} onSubmit={sendEmail} className="contact-form">
-          <div className="form-group">
-            <input type="text" name="from_name" placeholder="Name" required />
+        <div className="contact-two-col">
+          <div>
+            <div className="info-column">
+              <div className="info-box mb-4">
+                <i className="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>4505 Peachtree Lakes Dr<br />Berkeley Lake, GA 30096</p>
+              </div>
+              <div className="info-box mb-4">
+                <i className="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@techport13.com</p>
+              </div>
+              <div className="info-box mb-4">
+                <i className="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>+1 (404) 919-2660</p>
+              </div>
+            </div>
           </div>
-          <div className="form-group">
-            <input type="text" name="company_name" placeholder="Company" required />
+
+          <div>
+            <form ref={form} onSubmit={sendEmail} className="php-email-form">
+              <div className="grid">
+                <div className="form-group">
+                  <input type="text" name="from_name" className="form-control" id="name" placeholder="Your Name" required />
+                </div>
+                <div className="form-group">
+                  <input type="email" className="form-control" name="email_address" id="email" placeholder="Your Email" required />
+                </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" name="company_name" id="company" placeholder="Company" />
+                </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" name="phone_number" id="phone" placeholder="Phone Number" />
+                </div>
+                <div className="form-group full-width">
+                  <textarea className="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div className="form-group full-width">
+                  <label htmlFor="file_upload">Upload File (Optional)</label>
+                  <input type="file" className="form-control-file" id="file_upload" name="file_upload" />
+                </div>
+              </div>
+              <div className="my-3">
+                <div className={`loading ${status === "sending" ? "d-block" : "d-none"}`}>Loading</div>
+                <div className={`error-message ${status === "error" ? "d-block" : "d-none"}`}>Failed to send message. Please try again.</div>
+                <div className={`sent-message ${status === "success" ? "d-block" : "d-none"}`}>Your message has been sent. Thank you!</div>
+              </div>
+              <div className="text-center">
+                <button type="submit" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                </button>
+              </div>
+            </form>
           </div>
-          <div className="form-group">
-            <input type="email" name="email_address" placeholder="Email" required />
-          </div>
-          <div className="form-group">
-            <input type="tel" name="phone_number" placeholder="Phone Number" required />
-          </div>
-          <div className="form-group">
-            <textarea name="message" placeholder="Your Message" required></textarea>
-          </div>
-          <button type="submit" className="submit-btn" disabled={status === "sending"}>
-            {status === "sending" ? "Sending..." : "Send Message"}
-          </button>
-          {status === "success" && <p className="success">Message sent successfully!</p>}
-          {status === "error" && <p className="error">Failed to send message. Please try again.</p>}
-        </form>
+        </div>
       </div>
     </section>
   );

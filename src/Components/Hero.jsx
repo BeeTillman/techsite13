@@ -1,16 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Carousel } from "react-responsive-carousel";
 import "../styles/Hero.css";
-
-import image1 from "url:../images/tpsiteSkylineStock6.jpg";
-import image2 from "url:../images/tpsiteSkylineStock1.jpg";
-import image3 from "url:../images/tpsiteSkylineStock8.jpg";
-
-const quotes = [
-  "Dedicated exclusively to the ServiceNow Platform.",
-  "Recognized as a Premier Partner with ServiceNow.",
-  "Empowering businesses through digital transformation.",
-];
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -33,22 +22,20 @@ const Hero = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="hero" className="hero-section section-transition">
-      <div className="section-overlay overlay-bottom"></div>
-      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={10000}>
-        <div>
-          <img src={image1} alt={quotes[0]} />
-          <p className="legend">{quotes[0]}</p>
+    <section ref={sectionRef} id="hero" className="d-flex align-items-center" role="banner">
+      <div className="container-fluid" data-aos="fade-up">
+        <div className="row justify-content-center">
+          <div className="col-xl-8 col-lg-10 text-center">
+            <h1>Techport Thirteen</h1>
+            <h2>Dedicated exclusively to the ServiceNow Platform. Recognized as a Premier Partner with ServiceNow, empowering businesses through digital transformation.</h2>
+            <div>
+              <a href="#about" className="btn-get-started scrollto" aria-label="Learn more about Techport13">
+                Learn More
+              </a>
+            </div>
+          </div>
         </div>
-        <div>
-          <img src={image2} alt={quotes[1]} />
-          <p className="legend">{quotes[1]}</p>
-        </div>
-        <div>
-          <img src={image3} alt={quotes[2]} />
-          <p className="legend">{quotes[2]}</p>
-        </div>
-      </Carousel>
+      </div>
     </section>
   );
 };
