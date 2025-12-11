@@ -30,6 +30,7 @@ import tpsitePfpPhutson from "url:../images/tpsitePfpPhutson.png";
 const teamMembers = [
   { name: "Manish Patel", title: "CEO & Founder", image: tpsitePfpMPatel },
   { name: "Michael Thrasher", title: "Developer & Consultant", image: tpsitePfpMThrasher },
+  { name: "Billups Tillman", title: "Developer & Consultant", image: tpsitePfpBTillman },
   { name: "Josh Clements", title: "Developer & Consultant", image: tpsitePfpJClements },
   { name: "Steven Chaney", title: "Developer & Consultant", image: tpsitePfpSChaney },
   { name: "Jeff Shirling", title: "Developer & Consultant", image: tpsitePfpJShirling },
@@ -48,7 +49,6 @@ const teamMembers = [
   { name: "Dylan Diener", title: "Developer & Consultant", image: tpsitePfpDDiener },
   { name: "Hunter Bailey", title: "Developer & Consultant", image: tpsitePfpHBailey },
   { name: "Stephen D'Angelo", title: "Developer & Consultant", image: tpsitePfpSDAngelo },
-  { name: "Billups Tillman", title: "Developer & Consultant", image: tpsitePfpBTillman },
   { name: "Calvin Brauer", title: "Developer & Consultant", image: tpsitePfpCBrauer },
   { name: "Jerrod Davenport", title: "Developer & Consultant", image: tpsitePfpJDavenport },
   { name: "Kyle Harrison", title: "Developer & Consultant", image: tpsitePfpKHarrison },
