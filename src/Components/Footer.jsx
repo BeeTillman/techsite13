@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/Footer.css";
 
 const Footer = () => {
   return (
@@ -7,22 +6,29 @@ const Footer = () => {
       <div className="footer-top">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6 footer-contact">
+            <div className="col-lg-3 col-md-6 footer-contact">
               <h3>Techport13</h3>
             </div>
 
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <p>
-                4505 Peachtree Lakes Dr <br />
+                4505 Peachtree Lakes Dr<br />
                 Berkeley Lake, GA 30096<br />
                 United States
               </p>
             </div>
 
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <strong>Phone:</strong> +1 (404) 919-2660<br />
               <strong>Email:</strong> info@techport13.com<br />
-              <strong>Homepage:</strong> https://techport13.com/ <br />
+              <strong>Homepage:</strong> https://techport13.com/
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <strong>Careers:</strong>{" "}
+              <a href="https://careers.techport13.com" target="_blank" rel="noopener noreferrer">
+                careers.techport13.com
+              </a>
             </div>
           </div>
         </div>
@@ -30,17 +36,15 @@ const Footer = () => {
 
       <div className="container">
         <div className="copyright-wrap d-md-flex py-4">
-          <div className="me-md-auto text-center text-md-start">
-            {/* Copyright content can be added here if needed */}
-          </div>
+          <div className="me-md-auto text-center text-md-start"></div>
           <div className="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="https://www.facebook.com/techport13/" className="facebook">
+            <a href="https://www.facebook.com/techport13/" className="facebook" target="_blank" rel="noopener noreferrer">
               <i className="bx bxl-facebook"></i>
             </a>
-            <a href="https://www.instagram.com/techport_13/?hl=en" className="instagram">
+            <a href="https://www.instagram.com/techport_13/?hl=en" className="instagram" target="_blank" rel="noopener noreferrer">
               <i className="bx bxl-instagram"></i>
             </a>
-            <a href="https://www.linkedin.com/company/techport-thirteen-inc-/mycompany/" className="linkedin">
+            <a href="https://www.linkedin.com/company/techport-thirteen-inc-/mycompany/" className="linkedin" target="_blank" rel="noopener noreferrer">
               <i className="bx bxl-linkedin"></i>
             </a>
           </div>

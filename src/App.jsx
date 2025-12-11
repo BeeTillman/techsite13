@@ -9,49 +9,47 @@ import "./styles/main.css";
 
 function App() {
   useEffect(() => {
-    // Back to top functionality
-    const backToTop = document.createElement('a');
-    backToTop.href = '#';
-    backToTop.className = 'back-to-top';
-    backToTop.innerHTML = '<i class="bi bi-arrow-up-short"></i>';
-    document.body.appendChild(backToTop);
-
-    const toggleBackToTop = () => {
-      if (window.scrollY > 100) {
-        backToTop.classList.add('active');
-      } else {
-        backToTop.classList.remove('active');
-      }
-    };
-
-    const scrollToTop = (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false
       });
-    };
+    }
 
-    window.addEventListener('scroll', toggleBackToTop);
-    backToTop.addEventListener('click', scrollToTop);
-
-    return () => {
-      window.removeEventListener('scroll', toggleBackToTop);
-      backToTop.removeEventListener('click', scrollToTop);
-      if (backToTop.parentNode) {
-        backToTop.parentNode.removeChild(backToTop);
-      }
-    };
+    const backToTop = document.querySelector(".back-to-top");
+    if (backToTop) {
+      const toggleBackToTop = () => {
+        if (window.scrollY > 100) {
+          backToTop.classList.add("active");
+        } else {
+          backToTop.classList.remove("active");
+        }
+      };
+      window.addEventListener("scroll", toggleBackToTop);
+      return () => window.removeEventListener("scroll", toggleBackToTop);
+    }
   }, []);
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
       <Header />
       <Hero />
-      <About />
-      <Team />
-      <Contact />
+      <main id="main">
+        <About />
+        <Team />
+        <Contact />
+      </main>
       <Footer />
+      <a href="#" className="back-to-top d-flex align-items-center justify-content-center" onClick={scrollToTop}>
+        <i className="bi bi-arrow-up-short"></i>
+      </a>
     </>
   );
 }

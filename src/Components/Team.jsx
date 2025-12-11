@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../styles/Team.css";
+import React, { useEffect, useRef } from "react";
 import tpsitePfpMPatel from "url:../images/tpsitePfpMPatel.png";
 import tpsitePfpMThrasher from "url:../images/tpsitePfpMThrasher.png";
 import tpsitePfpJClements from "url:../images/tpsitePfpJClements.png";
@@ -55,96 +54,62 @@ const teamMembers = [
   { name: "Kyle Harrison", title: "Developer & Consultant", image: tpsitePfpKHarrison },
   { name: "Nithya Akula", title: "Developer & Consultant", image: tpsitePfpNAkula },
   { name: "Patrick Hutson", title: "Developer & Consultant", image: tpsitePfpPhutson },
+  { name: "Bryan Vargas", title: "Developer & Consultant", image: tpsitePfpBVargas },
 ];
 
 const Team = () => {
-  const sectionRef = useRef(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+    if (window.Swiper && swiperRef.current) {
+      new window.Swiper(swiperRef.current, {
+        speed: 600,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: "auto",
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+          clickable: true
+        },
+        breakpoints: {
+          320: { slidesPerView: 1, spaceBetween: 20 },
+          640: { slidesPerView: 2, spaceBetween: 20 },
+          992: { slidesPerView: 3, spaceBetween: 20 },
+          1200: { slidesPerView: 4, spaceBetween: 20 }
         }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      });
     }
-
-    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % Math.ceil(teamMembers.length / 4));
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(teamMembers.length / 4));
-    setIsAutoPlaying(false);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(teamMembers.length / 4)) % Math.ceil(teamMembers.length / 4));
-    setIsAutoPlaying(false);
-  };
-
-  const getVisibleMembers = () => {
-    const start = currentSlide * 4;
-    return teamMembers.slice(start, start + 4);
-  };
-
   return (
-    <section ref={sectionRef} id="our-team" className="testimonials section-bg">
+    <section id="our-team" className="testimonials section-bg">
       <div className="container" data-aos="fade-up">
         <div className="section-title">
           <h2>Our Team</h2>
-          <p>Meet the dedicated individuals who make up the heart and soul of our company. Our employees are a diverse and talented group, working together to bring innovation and excellence to everything we do.</p>
+          <p>
+            Meet the dedicated individuals who make up the heart and soul of our company. 
+            Our employees are a diverse and talented group, working together to bring 
+            innovation and excellence to everything we do.
+          </p>
         </div>
 
-        <div className="testimonials-slider">
-          <div className="testimonials-container">
-            {getVisibleMembers().map((member, index) => (
-              <div key={`${member.name}-${currentSlide}`} className="testimonial-item">
-                <img src={member.image} className="testimonial-img" alt={`Portrait of ${member.name}, ${member.title}`} />
-                <h3>{member.name}</h3>
-                <h4>{member.title}</h4>
+        <div ref={swiperRef} className="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="300">
+          <div className="swiper-wrapper">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="swiper-slide">
+                <div className="testimonial-item">
+                  <img src={member.image} className="testimonial-img" alt={member.name} />
+                  <h3>{member.name}</h3>
+                  <h4>{member.title}</h4>
+                </div>
               </div>
             ))}
           </div>
-          
-          <div className="testimonials-controls">
-            <button className="testimonials-btn prev" onClick={prevSlide} aria-label="Previous team members">
-              <i className="bi bi-chevron-left"></i>
-            </button>
-            <button className="testimonials-btn next" onClick={nextSlide} aria-label="Next team members">
-              <i className="bi bi-chevron-right"></i>
-            </button>
-          </div>
-          
-          <div className="testimonials-pagination">
-            {Array.from({ length: Math.ceil(teamMembers.length / 4) }).map((_, index) => (
-              <button
-                key={index}
-                className={`pagination-dot ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => {
-                  setCurrentSlide(index);
-                  setIsAutoPlaying(false);
-                }}
-                aria-label={`Go to team members ${index + 1}`}
-              />
-            ))}
-          </div>
+          <div className="swiper-pagination"></div>
         </div>
       </div>
     </section>
