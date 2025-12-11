@@ -56,7 +56,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a className="nav-link" href="https://careers.techport13.com" target="_blank" rel="noopener noreferrer">
+              <a className="nav-link" href="https://careers.techport13.com">
                 Careers
               </a>
             </li>
