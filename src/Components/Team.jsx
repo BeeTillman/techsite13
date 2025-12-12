@@ -20,7 +20,6 @@ import tpsitePfpDDiener from "url:../images/tpsitePfpDDiener.png";
 import tpsitePfpHBailey from "url:../images/tpsitePfpHBailey.png";
 import tpsitePfpSDAngelo from "url:../images/tpsitePfpSDAngelo.png";
 import tpsitePfpBTillman from "url:../images/tpsitePfpBTillman.png";
-import tpsitePfpBVargas from "url:../images/tpsitePfpBVargas.png";
 import tpsitePfpCBrauer from "url:../images/tpsitePfpCBrauer.png";
 import tpsitePfpJDavenport from "url:../images/tpsitePfpJDavenport.png";
 import tpsitePfpKHarrison from "url:../images/tpsitePfpKHarrison.png";
@@ -54,7 +53,6 @@ const teamMembers = [
   { name: "Kyle Harrison", title: "Developer & Consultant", image: tpsitePfpKHarrison },
   { name: "Nithya Akula", title: "Developer & Consultant", image: tpsitePfpNAkula },
   { name: "Patrick Hutson", title: "Developer & Consultant", image: tpsitePfpPhutson },
-  { name: "Bryan Vargas", title: "Developer & Consultant", image: tpsitePfpBVargas },
 ];
 
 const Team = () => {

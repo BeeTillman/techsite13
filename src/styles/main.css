@@ -259,12 +259,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   border: 2px solid #fff;
   background: transparent;
+  text-decoration: none;
 }
 
 #hero .btn-get-started:hover {
   background: #2F9C95;
   border-color: #2F9C95;
   color: #fff;
+  text-decoration: none;
 }
 
 #hero .animated {
@@ -458,8 +460,8 @@ section {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   position: relative;
