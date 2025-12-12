@@ -4,10 +4,20 @@ import logo from "url:../images/tpsiteTpLogo.png";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      const sections = ["hero", "about", "our-team", "contact"];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && window.scrollY >= section.offsetTop - 100) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -19,10 +29,12 @@ const Header = () => {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setIsMobileNavOpen(false);
+      setActiveSection(sectionId);
     }
   };
 
-  const toggleMobileNav = () => {
+  const toggleMobileNav = (e) => {
+    e.stopPropagation();
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
@@ -36,22 +48,22 @@ const Header = () => {
         <nav id="navbar" className={`navbar ${isMobileNavOpen ? "navbar-mobile" : ""}`}>
           <ul>
             <li>
-              <a className="nav-link scrollto active" href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
+              <a className={`nav-link scrollto ${activeSection === "hero" ? "active" : ""}`} href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
                 Home
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="#about" onClick={(e) => handleNavClick(e, "about")}>
+              <a className={`nav-link scrollto ${activeSection === "about" ? "active" : ""}`} href="#about" onClick={(e) => handleNavClick(e, "about")}>
                 About
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="#our-team" onClick={(e) => handleNavClick(e, "our-team")}>
+              <a className={`nav-link scrollto ${activeSection === "our-team" ? "active" : ""}`} href="#our-team" onClick={(e) => handleNavClick(e, "our-team")}>
                 Our Team
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
+              <a className={`nav-link scrollto ${activeSection === "contact" ? "active" : ""}`} href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
                 Contact
               </a>
             </li>
