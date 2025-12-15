@@ -33,11 +33,6 @@ const Header = () => {
     }
   };
 
-  const toggleMobileNav = (e) => {
-    e.stopPropagation();
-    setIsMobileNavOpen(!isMobileNavOpen);
-  };
-
   return (
     <header id="header" className={`fixed-top ${isScrolled ? "header-scrolled" : ""}`}>
       <div className="container d-flex align-items-center justify-content-between">
@@ -45,8 +40,8 @@ const Header = () => {
           <img src={logo} alt="Techport13 Logo" className="img-fluid" />
         </a>
 
-        <nav id="navbar" className={`navbar ${isMobileNavOpen ? "navbar-mobile" : ""}`}>
-          <ul>
+        <nav id="navbar" className="navbar">
+          <ul className={isMobileNavOpen ? "navbar-mobile" : ""}>
             <li>
               <a className={`nav-link scrollto ${activeSection === "hero" ? "active" : ""}`} href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
                 Home
@@ -75,7 +70,7 @@ const Header = () => {
           </ul>
           <i
             className={`bi ${isMobileNavOpen ? "bi-x" : "bi-list"} mobile-nav-toggle`}
-            onClick={toggleMobileNav}
+            onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
           ></i>
         </nav>
       </div>

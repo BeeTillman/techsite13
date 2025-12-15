@@ -162,59 +162,42 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+    z-index: 1001;
+    position: relative;
   }
 
   .navbar ul {
     display: none;
   }
-}
 
-.navbar-mobile {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(36, 53, 111, 0.9);
-  transition: 0.3s;
-  z-index: 999;
-}
+  .navbar ul.navbar-mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 80px 20px 20px 20px;
+    background: rgba(36, 53, 111, 0.95);
+    overflow-y: auto;
+    z-index: 1000;
+  }
 
-.navbar-mobile .mobile-nav-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
+  .navbar ul.navbar-mobile li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-.navbar-mobile ul {
-  display: block;
-  position: absolute;
-  top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #fff;
-  overflow-y: auto;
-  transition: 0.3s;
-}
+  .navbar ul.navbar-mobile a {
+    color: #fff;
+    font-size: 18px;
+    display: block;
+  }
 
-.navbar-mobile > ul > li {
-  padding: 0;
-}
-
-.navbar-mobile a,
-.navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #24356f;
-}
-
-.navbar-mobile a:hover,
-.navbar-mobile .active,
-.navbar-mobile li:hover > a {
-  color: #24356f;
+  .navbar ul.navbar-mobile a:hover,
+  .navbar ul.navbar-mobile .active {
+    color: #2F9C95;
+  }
 }
 
 /*--------------------------------------------------------------
